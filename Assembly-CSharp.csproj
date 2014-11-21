@@ -46,6 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Lynn\DoNotOpen\IKnowYouWillOpenItAnyway.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\ControlInstruction.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\Helper.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\TP_Animator.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\TP_Camera.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\TP_Controller.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\TP_InputManager.cs" />
+     <Compile Include="Assets\Lynn\Lynn Scripts\TP_Motor.cs" />
+     <Compile Include="Assets\Lynn\ReadMe_Camera Instruction.cs" />
      <Compile Include="Assets\POIButtonManager.cs" />
      <Compile Include="Assets\POIClasses.cs" />
      <Compile Include="Assets\POIInfo.cs" />
@@ -57,6 +66,12 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.0.0b2/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{C6B51B99-B4A8-199E-A1E2-C27AF8E3309B}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{BD8CA117-186D-4E18-852C-AB83E8D65664}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
