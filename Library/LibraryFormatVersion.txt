@@ -1,2 +1,2 @@
-unityRebuildLibraryVersion: 10
-unityForwardCompatibleVersion: 40
+unityRebuildLibraryVersion: 11
+unityForwardCompatibleVersion: 41
