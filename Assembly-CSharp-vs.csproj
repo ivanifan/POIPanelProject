@@ -72,13 +72,8 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.0.0b10/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
-<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
-=======
-  </ItemGroup>
-  <ItemGroup>
->>>>>>> FETCH_HEAD
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
       <Project>{C6B51B99-B4A8-199E-A1E2-C27AF8E3309B}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
