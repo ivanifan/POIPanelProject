@@ -16,7 +16,6 @@ public class POIButtonManager : MonoBehaviour {
     public Object buttonPrefab;
     public int NumOfButtons = 0;
     public float POIlistHeight = 7.0f;
-    public bool isEditMode = false;
 
 	// Use this for initialization
 	void Start () {
