@@ -59,6 +59,7 @@
      <Compile Include="Assets\POIClasses.cs" />
      <Compile Include="Assets\POIInfo.cs" />
      <Compile Include="Assets\POIMenuStateManager.cs" />
+     <Compile Include="Assets\PullCurrentTransform.cs" />
      <Compile Include="Assets\Teleport.cs" />
      <Compile Include="Assets\XmlIO.cs" />
      <None Include="Assets\POIHandler1.xml" />
