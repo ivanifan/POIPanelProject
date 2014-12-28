@@ -339,6 +339,7 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 1
-  additionalBone: 1
+  additionalBone: 0
+  combineSubmeshes: 0
   userData: 
   assetBundleName: 

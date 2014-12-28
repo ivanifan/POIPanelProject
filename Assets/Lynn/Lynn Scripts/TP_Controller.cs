@@ -3,22 +3,19 @@ using System.Collections;
 
 public class TP_Controller : MonoBehaviour {
 	//store prefabs of ICon lab cameras
-	public GameObject LeftCamera;
-	public GameObject RightCamera;
-	
-	
+//	public GameObject LeftCamera;
+//	public GameObject RightCamera;	
+
+	public static CharacterController characterController;
 	public static TP_Controller Instance;
 	void Awake () {
-		
+		characterController = GetComponent("CharacterController") as CharacterController;
 		Instance = this;
 		
-		TP_Camera.UseExistingOrCreateNewMainCamera();
+	//	TP_Camera.UseExistingOrCreateNewMainCamera();
 	}
 
-	void Update () {
-		if(Camera.main == null)
-			return;
-		
+	void Update () {		
 		GetLocomontionInput();
 		HandleActionInput();
 		TP_Motor.Instance.UpdateMotor();
@@ -47,7 +44,16 @@ public class TP_Controller : MonoBehaviour {
 		// GetMouseButtonDown checks if the button is clicked at that frame, so you cannot hold the button with this command
 		if(Input.GetMouseButton(2))
 			TP_Motor.Instance.MoveVector += new Vector3(0,0,1);
+
 		
+		//when tracking xbox controller, press A to move to the direction of pointing
+		if(Input.GetAxis("XboxPointGo") == 1){
+			Vector3 moveDirection = new Vector3(DIRE.Instance.Hand.transform.forward.x, 0, DIRE.Instance.Hand.transform.forward.z);
+			moveDirection = moveDirection.normalized;
+			TP_Motor.Instance.MoveVector += moveDirection;
+	
+		}
+
 		if(!TP_Motor.Instance.gravityOn){
 			if(Input.GetKey(TP_InputManager.instance.elevate)){
 				TP_Motor.Instance.MoveVector += new Vector3(0,1,0);
@@ -58,7 +64,8 @@ public class TP_Controller : MonoBehaviour {
 			//	Debug.Log("down pressed");
 			}
 		}
-		
+
+
 		TP_Animator.Instance.DetermineCurrentMoveDirection();
 		
 	}

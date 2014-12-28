@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TP_Motor : MonoBehaviour {
 
-	public static CharacterController characterController;
 	public static TP_Motor Instance;
 	
 	public float ForwardSpeed = 3f;
@@ -17,16 +16,17 @@ public class TP_Motor : MonoBehaviour {
 	public float SlideThreshold = 0.6f; // the bigger, the easiler to slide
 	public float MaxControllableSlideMagnitude = 0.4f;
 	public bool gravityOn; 
-	
+	public Transform virtualCamera;
 	private Vector3 slideDirection;
 
+	
 	
 	public Vector3 MoveVector {get; set; }
 	
 	public float VerticalVelocity {get; set;}
 		
 	void Awake () {
-		characterController = GetComponent<CharacterController>() as CharacterController;	
+			
 		Instance = this;
 		gravityOn = true;
 	}
@@ -66,25 +66,25 @@ public class TP_Motor : MonoBehaviour {
 		
 		
 		// Move the character in world space
-		characterController.Move (MoveVector * Time.deltaTime);
+		TP_Controller.characterController.Move (MoveVector * Time.deltaTime);
 	}
 	
 
 	//this method plays walk/ idle animation 
 	void playAnimation(){
 		if(MoveVector.magnitude > 0.1f){
-			if(!GetComponent<Animation>().IsPlaying("f_walk_neutral_04_inplace")){
-			GetComponent<Animation>().Play("f_walk_neutral_04_inplace");	
+			if(!animation.IsPlaying("f_walk_neutral_04_inplace")){
+			animation.Play("f_walk_neutral_04_inplace");	
 			}
 		}
 		if(MoveVector.magnitude == 0){
-			if(!GetComponent<Animation>().IsPlaying("f_idle_neutral_04") && !GetComponent<Animation>().IsPlaying("f_gestic_talk_neutral_02")){
-			GetComponent<Animation>().Play("f_idle_neutral_04");	
+			if(!animation.IsPlaying("f_idle_neutral_04") && !animation.IsPlaying("f_gestic_talk_neutral_02")){
+			animation.Play("f_idle_neutral_04");	
 			}
 		}
 		if(Input.GetKeyUp(KeyCode.T)){
-			if(!GetComponent<Animation>().IsPlaying("f_gestic_talk_neutral_02")){
-			GetComponent<Animation>().Play("f_gestic_talk_neutral_02");	
+			if(!animation.IsPlaying("f_gestic_talk_neutral_02")){
+			animation.Play("f_gestic_talk_neutral_02");	
 			
 			}
 		}
@@ -94,13 +94,13 @@ public class TP_Motor : MonoBehaviour {
 	void ApplyGravity(){
 		if(MoveVector.y > - TerminalVelocity)
 			MoveVector = new Vector3(MoveVector.x,MoveVector.y - Gravity * Time.deltaTime, MoveVector.z);
-		if (characterController.isGrounded && MoveVector.y < -1)  // if the character is on the ground, we want to keep its y speed to a small number. 
+		if (TP_Controller.characterController.isGrounded && MoveVector.y < -1)  // if the character is on the ground, we want to keep its y speed to a small number. 
 																				// otherwise when it falls, it will start with the TerminalVelocity
 			MoveVector = new Vector3(MoveVector.x,-1, MoveVector.z);
 	}
 	
 	void ApplySlide(){
-		if(!characterController.isGrounded)	
+		if(!TP_Controller.characterController.isGrounded)	
 			return;
 		slideDirection = new Vector3(0, 0, 0); // in tutorial it is = Vector3.zero    ***********************************!!!!!!!!***********
 		
@@ -119,7 +119,7 @@ public class TP_Motor : MonoBehaviour {
 	}
 	
 	public void Jump(){
-		if(characterController.isGrounded)	
+		if(TP_Controller.characterController.isGrounded)	
 			VerticalVelocity = JumpSpeed;
 	}
 	
@@ -130,7 +130,7 @@ public class TP_Motor : MonoBehaviour {
 //		This line is added by me
 //			TP_Camera.Instance.SnapCamera();   // this allows the camera to smooth back to the back of the character
 		transform.rotation = Quaternion.Euler(transform.eulerAngles.x,
-				Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+				virtualCamera.eulerAngles.y, transform.eulerAngles.z);
 		}
 /*		
 		//This is to check if joystick right trigger is pressed or not
@@ -146,7 +146,7 @@ public class TP_Motor : MonoBehaviour {
 	
 	//This function is used to snap the charater align with the camera when pressing the Q,E keys
 	public void SnapCharaterWithCamera_Key(){
-		transform.rotation = Quaternion.Euler (transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+		transform.rotation = Quaternion.Euler (transform.eulerAngles.x, virtualCamera.eulerAngles.y, transform.eulerAngles.z);
 	}
 
 	

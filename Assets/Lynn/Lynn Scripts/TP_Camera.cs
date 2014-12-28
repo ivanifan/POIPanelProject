@@ -12,7 +12,7 @@ public class TP_Camera : MonoBehaviour {
 	public float DistanceMin = 0.3f; // near limit
 	public float DistanceMax = 10f;   //far limit
 	public float DistanceSmooth = 0.05f;  //Transition time in seconds
-	public float DistanceResumeSmooth = .3f;
+	public float DistanceResumeSmooth = 1f;
 	
 	public float X_MouseSensitivity = 5f;
 	public float Y_MouseSensitivity = 5f;
@@ -45,14 +45,13 @@ public class TP_Camera : MonoBehaviour {
 	private float velDistance = 0f;  //speed along the smoothing curve
 	private  float startDistance = 0f;   //validated start distance
 	private Vector3 position = Vector3.zero;
-	private float desiredDistance = 0f;    //distance you want to move to
-	private Vector3 desiredPosition = Vector3.zero;
+	public float desiredDistance = 0f;    //distance you want to move to
+	public Vector3 desiredPosition = Vector3.zero;
 	private float distanceSmooth = 0f;
 	private float preOccludedDistance = 0f; // this will store the distance value very time we move the mousewheel
 	private float showSpeedGUITime;
 	
 	private bool showSpeed = false;
-	private bool zoomOut = false;
 	
 	private int countRightClick = 0; // tell if it is the first time right mouse is clicked. 
 	
@@ -78,19 +77,10 @@ public class TP_Camera : MonoBehaviour {
 			return;
 		
 		HandlePlayerInput();
-		checkCameraCharacterDistance(desiredPosition, cameraDistanceCheck.position);
-		
-		var count = 0;
-					
-		do
-		{
-		
-			CalculateDesiredPosition();
-			count ++;
-		
-		} while(CheckIfOccluded(count));
+		checkCameraCharacterDistance(desiredPosition, cameraDistanceCheck.position);					
+
+		CalculateDesiredPosition();
 		UpdatePosition();
-		
 	}
 	
 	void HandlePlayerInput(){
@@ -154,15 +144,15 @@ public class TP_Camera : MonoBehaviour {
 				//GameObject[] children = new GameObject[2];
 				transform.Find("LeftCamera(Clone)").gameObject.SetActive(false);
 				transform.Find("RightCamera(Clone)").gameObject.SetActive(false);
-				gameObject.GetComponent<Camera>().rect = new Rect (0,0,1,1);
-				gameObject.GetComponent<Camera>().fieldOfView = 60;
+				gameObject.camera.rect = new Rect (0,0,1,1);
+				gameObject.camera.fieldOfView = 60;
 			}
 			else{
 				iconLabCam = true;
 				transform.Find("LeftCamera(Clone)").gameObject.SetActive(true);
 				transform.Find("RightCamera(Clone)").gameObject.SetActive(true);
-				gameObject.GetComponent<Camera>().rect = new Rect(0.3333334f, 0,0.3333334f, 1);
-				gameObject.GetComponent<Camera>().fieldOfView = 34;
+				gameObject.camera.rect = new Rect(0.3333334f, 0,0.3333334f, 1);
+				gameObject.camera.fieldOfView = 34;
 			}
 		}
 		
@@ -212,17 +202,18 @@ public class TP_Camera : MonoBehaviour {
 				showSpeedGUITime = Time.time;
 			}
 		}
+
+
+
 	}
 	
 	
 	//all the smoothing to the distance happens here
 	void CalculateDesiredPosition(){
 		//Evaluate distance
-		ResetDesiredDistance(); // check if it is still occluded or not.
-		Distance = Mathf.SmoothDamp(Distance, desiredDistance, ref velDistance, distanceSmooth); // (video No. 19). Google Mathf.SmoothDamp. VelDistance is the speed along the smoothing curve
-		
-//		Distance = desiredDistance;
-		
+		//ResetDesiredDistance(); // check if it is still occluded or not.
+		Distance = Mathf.SmoothDamp(Distance, desiredDistance, ref velDistance, distanceSmooth); // (video No. 19). Google Mathf.SmoothDamp. VelDistance is the speed along the 
+																									//smoothing curve
 		// Calculate desired position
 		desiredPosition = CalculatePosition(mouseY, mouseX, Distance);
 	}
@@ -236,18 +227,148 @@ public class TP_Camera : MonoBehaviour {
 	}
 
 	
-	// adjust the position of the camera if occluded
+
+	
+
+
+
+
+	
+	void UpdatePosition(){
+		var posX = Mathf.SmoothDamp(position.x, desiredPosition.x, ref velX, X_Smooth);
+		var posY = Mathf.SmoothDamp(position.y, desiredPosition.y, ref velY, Y_Smooth);
+		var posZ = Mathf.SmoothDamp(position.z, desiredPosition.z, ref velZ, X_Smooth);
+		position = new Vector3(posX, posY, posZ);
+		transform.position = position;
+		transform.LookAt(TargetLookAt);
+	}
+	
+	public void Reset(){
+		mouseX = 0;  // the tutorial does not have f as float
+		mouseY = 10;
+		Distance = startDistance;
+		desiredDistance = Distance;
+		preOccludedDistance = Distance;
+	}
+
+
+	//This method switches the camera to first person view
+	// shoot a ray from camera to cameraDistanceCheck(a child of the Character.). adjust the visibility of the cameraDistanceCheck based
+	// on the distance from camera to the character.
+	public void checkCameraCharacterDistance(Vector3 from, Vector3 to){
+		//PRE: from is the transform.position of the camera
+		//		to is the transfoorm.position of the cameraDistanceCheck
+		//POST: change the transparency and visibility of the cameraDistanceCheck and its children
+		RaycastHit hitInfo;
+		//Debug.Log("in the function");
+		Debug.DrawLine(from, to, Color.green);
+		if(Physics.Linecast(from, to, out hitInfo)){
+			
+			if (hitInfo.distance < .8 && hitInfo.collider.tag != "Player"){
+				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").renderer.enabled = false;
+			}
+			if(hitInfo.distance > .9 && hitInfo.collider.tag != "Player"){
+				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").renderer.enabled = true;
+			}
+		}
+		//	Debug.Log(hitInfo.collider.tag);
+		
+	}	
+
+
+
+// show current speed for 3 seconds when speed is adjusted.
+	void OnGUI(){
+		if(showSpeed){
+			if(Time.time - showSpeedGUITime > 3.0f){
+				showSpeed = false;
+			}
+			GUI.Label (showSpeedRect, "Current Speed: " + TP_Motor.Instance.ForwardSpeed, style);
+			//GUI.Label(Rect(10, 10, 100, 20), "Hello World!");
+			//GUI.Label(Rect(100, 20, 80, 20), "Current Speed: ");
+			
+		}
+	}
+
+
+
+
+	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+
+	//called by controller. NOT USED IN DIRE
+	// Make sure a camera is always in the scene, and add an instance of TP_Camera Script to the mainCamera
+	public static void UseExistingOrCreateNewMainCamera(){  //This function is called by TP Controller, TP camera does not call this function
+		GameObject tempCamera;
+		GameObject targetLookAt;
+		GameObject cameraDistanceCheckObject;
+		
+		//instantiate two left and right cameras for the ICon lab camera
+		//	GameObject leftCam = new GameObject("LeftCamera");
+		GameObject leftCam = Instantiate(TP_Controller.Instance.LeftCamera.gameObject) as GameObject;
+		//	GameObject rightCam = new GameObject("RightCamera");
+		GameObject rightCam = Instantiate(TP_Controller.Instance.RightCamera.gameObject) as GameObject;
+		
+		TP_Camera myCamera;
+		
+		if(Camera.mainCamera != null){
+			tempCamera = Camera.mainCamera.gameObject;
+			leftCam.transform.parent = tempCamera.transform;
+			leftCam.transform.localPosition = new Vector3(0,0,0);
+			leftCam.transform.localRotation = Quaternion.Euler (0,315.6443f,0);
+			rightCam.transform.parent = tempCamera.transform;
+			rightCam.transform.localPosition = new Vector3(0,0,0);
+			rightCam.transform.localRotation = Quaternion.Euler (0,44.355564f,0);
+			leftCam.SetActive(false);
+			rightCam.SetActive(false);
+		}
+		else {
+			tempCamera = new GameObject("Main Camera");	
+			tempCamera.AddComponent("Camera"); // this is to make the tempCamera object a camera by giving it a camera component
+			tempCamera.AddComponent ("Flare Layer");
+			tempCamera.AddComponent ("GUILayer");
+			tempCamera.AddComponent ("Audio listenr");
+			tempCamera.tag = "MainCamera";
+			leftCam.transform.parent = tempCamera.transform;
+			leftCam.transform.localPosition = new Vector3(0,0,0);
+			leftCam.transform.localRotation = Quaternion.Euler (0,315.6443f,0);
+			rightCam.transform.parent = tempCamera.transform;
+			rightCam.transform.localPosition = new Vector3(0,0,0);
+			rightCam.transform.localRotation = Quaternion.Euler (0,44.355564f,0);
+			leftCam.SetActive(false);
+			rightCam.SetActive(false);
+		}
+		tempCamera.AddComponent("TP_Camera"); // This is to attach the TP_Camera script to the camera
+		
+		myCamera = tempCamera.GetComponent("TP_Camera") as TP_Camera; // find a reference for the just added TP Camera Component
+		
+		targetLookAt = GameObject.Find("targetLookAt") as GameObject;
+		
+		cameraDistanceCheckObject = GameObject.Find("CameraDistanceCheck") as GameObject;
+		// if the targetLookAt does not exist, create one
+		if(targetLookAt == null){
+			targetLookAt = new GameObject("targetLookAt");	
+			targetLookAt.transform.position = Vector3.zero;  // set its location to world origin
+		}
+		myCamera.TargetLookAt = targetLookAt.transform;
+		myCamera.cameraDistanceCheck = cameraDistanceCheckObject.transform;
+	}
+
+
+// adjust the position of the camera if occluded
 	bool CheckIfOccluded(int count){
 		var isOccluded = false;
 		
-		var nearestDistance = 0f;
-		
-		if (zoomOut == true){
-			nearestDistance = -1f;
-		}else{
-			// Check what the nearest distance the camera should go to if it is occluded.
-			nearestDistance = CheckCameraPoints(TargetLookAt.position, desiredPosition);
-		}
+		// Check what the nearest distance the camera should go to if it is occluded.
+		var nearestDistance = CheckCameraPoints(TargetLookAt.position, desiredPosition);
 		
 		if(nearestDistance != -1){
 			if (count < MaxOcclusionChecks){
@@ -263,7 +384,7 @@ public class TP_Camera : MonoBehaviour {
 					
 			}
 			else {
-			Distance = nearestDistance 	- Camera.main.nearClipPlane;
+			Distance = nearestDistance 	- Camera.mainCamera.nearClipPlane;
 			desiredDistance = Distance;
 			distanceSmooth = DistanceResumeSmooth;  // from second from the last video
 			}
@@ -271,9 +392,20 @@ public class TP_Camera : MonoBehaviour {
 			
 		return isOccluded;
 	}
-	
-	
-	// returns a nearestDistance that the camera should go to in order to not being occluded
+
+
+	void ResetDesiredDistance(){
+		if(desiredDistance < preOccludedDistance){
+			var pos = CalculatePosition(mouseY, mouseX, preOccludedDistance);
+			var nearestDistance = CheckCameraPoints(TargetLookAt.position, pos);
+			
+			if(nearestDistance == -1 || nearestDistance > preOccludedDistance){
+				desiredDistance = preOccludedDistance;	
+			}
+		}
+	}
+
+// returns a nearestDistance that the camera should go to in order to not being occluded
 	float CheckCameraPoints(Vector3 from, Vector3 to){
 		var nearestDistance = -1f; // arbitary number used to test if any ray hit anything, the nearestDistance is -1 when not hitting anything
 			
@@ -311,158 +443,12 @@ public class TP_Camera : MonoBehaviour {
 		}
 		
 		// In the tutorial, the "To" is "to + transform.forward * camera.nearClipPlane"
-		if(Physics.Linecast(from, to + transform.forward * GetComponent<Camera>().nearClipPlane , out hitInfo) && hitInfo.collider.tag != "Player"){    // out hitInfo means the output of the function go into hitInfo
+		if(Physics.Linecast(from, to + transform.forward * camera.nearClipPlane , out hitInfo) && hitInfo.collider.tag != "Player"){    // out hitInfo means the output of the function go into hitInfo
 			if(hitInfo.distance < nearestDistance || nearestDistance == -1)
 			nearestDistance = hitInfo.distance - 3.0f;
 		}
 		
 		return nearestDistance;
 	}
-	
-	void ResetDesiredDistance(){
-		if(desiredDistance < preOccludedDistance){
-			var pos = CalculatePosition(mouseY, mouseX, preOccludedDistance);
-			var nearestDistance = CheckCameraPoints(TargetLookAt.position, pos);
-			
-			if(nearestDistance == -1 || nearestDistance > preOccludedDistance){
-				desiredDistance = preOccludedDistance;	
-				zoomOut = true;
-				StartCoroutine(ResetZoomOut());
-			}
-		}
-	}
-	
-	IEnumerator ResetZoomOut(){
-		yield return new WaitForSeconds(1f);
-		zoomOut = false;
-	}
-	
-	void UpdatePosition(){
-		//To improve movement of lynn, (eleminate the over rotation of camera when starting and stopping Lynn's movement, and the jittering issue when moving)
-		//the smoothing is disabled when Lynn is moving sideways, up/down, and forward/backward (both using keyboard& scrollwheel)
-		if(!(Input.GetKey(TP_InputManager.instance.leftward)||Input.GetKey(TP_InputManager.instance.rightward)||Input.GetKey(TP_InputManager.instance.elevate)
-				||Input.GetKey(TP_InputManager.instance.descend)||Input.GetKey(TP_InputManager.instance.forward)||Input.GetKey(TP_InputManager.instance.backward)
-			||Input.GetMouseButton(2))){
-			var posX = Mathf.SmoothDamp(position.x, desiredPosition.x, ref velX, X_Smooth);
-			var posY = Mathf.SmoothDamp(position.y, desiredPosition.y, ref velY, Y_Smooth);
-			var posZ = Mathf.SmoothDamp(position.z, desiredPosition.z, ref velZ, X_Smooth);
-		
-			position = new Vector3(posX, posY, posZ);
-		
-			
-		}else{
-			
-			position = desiredPosition;
-		}
-		
-		transform.position = position;
-		transform.LookAt(TargetLookAt);
-		
-	}
-	
-	public void Reset(){
-		mouseX = 0;  // the tutorial does not have f as float
-		mouseY = 10;
-		Distance = startDistance;
-		desiredDistance = Distance;
-		preOccludedDistance = Distance;
-	}
-	
-	// Make sure a camera is always in the scene, and add an instance of TP_Camera Script to the mainCamera
-	public static void UseExistingOrCreateNewMainCamera(){  //This function is called by TP Controller, TP camera does not call this function
-		GameObject tempCamera;
-		GameObject targetLookAt;
-		GameObject cameraDistanceCheckObject;
-		
-		//instantiate two left and right cameras for the ICon lab camera
-	//	GameObject leftCam = new GameObject("LeftCamera");
-		GameObject leftCam = Instantiate(TP_Controller.Instance.LeftCamera.gameObject) as GameObject;
-	//	GameObject rightCam = new GameObject("RightCamera");
-		GameObject rightCam = Instantiate(TP_Controller.Instance.RightCamera.gameObject) as GameObject;
-		
-		TP_Camera myCamera;
-		
-		if(Camera.main != null){
-			tempCamera = Camera.main.gameObject;
-			leftCam.transform.parent = tempCamera.transform;
-			leftCam.transform.localPosition = new Vector3(0,0,0);
-			leftCam.transform.localRotation = Quaternion.Euler (0,315.6443f,0);
-			rightCam.transform.parent = tempCamera.transform;
-			rightCam.transform.localPosition = new Vector3(0,0,0);
-			rightCam.transform.localRotation = Quaternion.Euler (0,44.355564f,0);
-			leftCam.SetActive(false);
-			rightCam.SetActive(false);
-		}
-		else {
-			tempCamera = new GameObject("Main Camera");	
-			tempCamera.AddComponent<Camera>(); // this is to make the tempCamera object a camera by giving it a camera component
-			UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent (tempCamera, "Assets/Lynn/Lynn Scripts/TP_Camera.cs (399,4)", "Flare Layer");
-			tempCamera.AddComponent <GUILayer>();
-			UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent (tempCamera, "Assets/Lynn/Lynn Scripts/TP_Camera.cs (401,4)", "Audio listenr");
-			tempCamera.tag = "MainCamera";
-			leftCam.transform.parent = tempCamera.transform;
-			leftCam.transform.localPosition = new Vector3(0,0,0);
-			leftCam.transform.localRotation = Quaternion.Euler (0,315.6443f,0);
-			rightCam.transform.parent = tempCamera.transform;
-			rightCam.transform.localPosition = new Vector3(0,0,0);
-			rightCam.transform.localRotation = Quaternion.Euler (0,44.355564f,0);
-			leftCam.SetActive(false);
-			rightCam.SetActive(false);
-		}
-		tempCamera.AddComponent<TP_Camera>(); // This is to attach the TP_Camera script to the camera
-		
-		myCamera = tempCamera.GetComponent<TP_Camera>() as TP_Camera; // find a reference for the just added TP Camera Component
-		
-		targetLookAt = GameObject.Find("targetLookAt") as GameObject;
-		
-		cameraDistanceCheckObject = GameObject.Find("CameraDistanceCheck") as GameObject;
-		// if the targetLookAt does not exist, create one
-		if(targetLookAt == null){
-			targetLookAt = new GameObject("targetLookAt");	
-			targetLookAt.transform.position = Vector3.zero;  // set its location to world origin
-		}
-		myCamera.TargetLookAt = targetLookAt.transform;
-		myCamera.cameraDistanceCheck = cameraDistanceCheckObject.transform;
-	}
-
-	
-	
-	//This method switches the camera to first person view
-	// shoot a ray from camera to cameraDistanceCheck(a child of the Character.). adjust the visibility of the cameraDistanceCheck based
-	// on the distance from camera to the character.
-	public void checkCameraCharacterDistance(Vector3 from, Vector3 to){
-		//PRE: from is the transform.position of the camera
-		//		to is the transfoorm.position of the cameraDistanceCheck
-		//POST: change the transparency and visibility of the cameraDistanceCheck and its children
-		RaycastHit hitInfo;
-		//Debug.Log("in the function");
-		Debug.DrawLine(from, to, Color.green);
-		if(Physics.Linecast(from, to, out hitInfo)){
-//			Debug.Log("All Time" + hitInfo.distance);
-//			Debug.Log("function works!");
-
-			if (hitInfo.distance < .8 && hitInfo.collider.tag != "Player"){
-				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = false;
-			}
-			if(hitInfo.distance > .9 && hitInfo.collider.tag != "Player"){
-				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = true;
-				}
-		}
-	//	Debug.Log(hitInfo.collider.tag);
-		
-	}	
-	
-	
-// show current speed for 3 seconds when speed is adjusted.
-	void OnGUI(){
-		if(showSpeed){
-			if(Time.time - showSpeedGUITime > 3.0f){
-				showSpeed = false;
-			}
-			GUI.Label (showSpeedRect, "Current Speed: " + TP_Motor.Instance.ForwardSpeed, style);
-			//GUI.Label(Rect(10, 10, 100, 20), "Hello World!");
-			//GUI.Label(Rect(100, 20, 80, 20), "Current Speed: ");
-			
-		}
-	}
+	*/
 }

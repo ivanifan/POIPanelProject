@@ -8,6 +8,7 @@ public class PullCurrentTransform : MonoBehaviour {
     public Transform characterTransform = null;
     public List<InputField> poiTransformFields = new List<InputField>();
 
+	//called by the button On Click event.
     public void GatherCurrentTransform()
     {
         poiTransformFields[0].value = characterTransform.position.x.ToString();
