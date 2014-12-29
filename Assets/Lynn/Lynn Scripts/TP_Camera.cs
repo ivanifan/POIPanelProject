@@ -144,15 +144,15 @@ public class TP_Camera : MonoBehaviour {
 				//GameObject[] children = new GameObject[2];
 				transform.Find("LeftCamera(Clone)").gameObject.SetActive(false);
 				transform.Find("RightCamera(Clone)").gameObject.SetActive(false);
-				gameObject.camera.rect = new Rect (0,0,1,1);
-				gameObject.camera.fieldOfView = 60;
+				gameObject.GetComponent<Camera>().rect = new Rect (0,0,1,1);
+				gameObject.GetComponent<Camera>().fieldOfView = 60;
 			}
 			else{
 				iconLabCam = true;
 				transform.Find("LeftCamera(Clone)").gameObject.SetActive(true);
 				transform.Find("RightCamera(Clone)").gameObject.SetActive(true);
-				gameObject.camera.rect = new Rect(0.3333334f, 0,0.3333334f, 1);
-				gameObject.camera.fieldOfView = 34;
+				gameObject.GetComponent<Camera>().rect = new Rect(0.3333334f, 0,0.3333334f, 1);
+				gameObject.GetComponent<Camera>().fieldOfView = 34;
 			}
 		}
 		
@@ -265,10 +265,10 @@ public class TP_Camera : MonoBehaviour {
 		if(Physics.Linecast(from, to, out hitInfo)){
 			
 			if (hitInfo.distance < .8 && hitInfo.collider.tag != "Player"){
-				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").renderer.enabled = false;
+				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = false;
 			}
 			if(hitInfo.distance > .9 && hitInfo.collider.tag != "Player"){
-				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").renderer.enabled = true;
+				cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = true;
 			}
 		}
 		//	Debug.Log(hitInfo.collider.tag);

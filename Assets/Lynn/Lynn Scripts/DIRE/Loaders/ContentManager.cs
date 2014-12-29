@@ -62,8 +62,8 @@ public class ContentManager : MonoBehaviour
 		// get the assetBundle from the www object
 		AssetBundle bundle = www.assetBundle;
 		
-		// load the assetBundle
-		bundle.LoadAll ();
+		// load the assetBundle  ****!!!! AssetBundle.loadall is deprecated, so it's commented out as I don't know how to update it yet.
+//		bundle.LoadAll ();
 
 		Application.LoadLevel(path.Substring(path.LastIndexOfAny(new char[]{"\\".ToCharArray()[0], "/".ToCharArray()[0]}) + 1, path.Length - path.LastIndexOfAny(new char[]{"\\".ToCharArray()[0], "/".ToCharArray()[0]}) - 9));
 
@@ -84,7 +84,7 @@ public class ContentManager : MonoBehaviour
 			gameObject.transform.position = new Vector3(0,15,0);
 		}
 
-		gameObject.rigidbody.velocity = Vector3.zero;
+		gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		gameObject.transform.eulerAngles = Vector3.zero;
 	}// OnLevelWasLoaded
 
@@ -95,11 +95,11 @@ public class ContentManager : MonoBehaviour
     {
 		if (Application.isLoadingLevel)
         {
-			gameObject.transform.rigidbody.useGravity = false;
+			gameObject.transform.GetComponent<Rigidbody>().useGravity = false;
 		}// loading level
 		else
         {
-			gameObject.transform.rigidbody.useGravity = true;
+			gameObject.transform.GetComponent<Rigidbody>().useGravity = true;
 		}//
 	}// Update
 

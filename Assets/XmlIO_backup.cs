@@ -19,7 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public static class XmlIO
+public static class XmlIO_backup
 {
 	public static Type[] allTypes
 	{

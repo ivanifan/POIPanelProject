@@ -73,18 +73,18 @@ public class TP_Motor : MonoBehaviour {
 	//this method plays walk/ idle animation 
 	void playAnimation(){
 		if(MoveVector.magnitude > 0.1f){
-			if(!animation.IsPlaying("f_walk_neutral_04_inplace")){
-			animation.Play("f_walk_neutral_04_inplace");	
+			if(!GetComponent<Animation>().IsPlaying("f_walk_neutral_04_inplace")){
+			GetComponent<Animation>().Play("f_walk_neutral_04_inplace");	
 			}
 		}
 		if(MoveVector.magnitude == 0){
-			if(!animation.IsPlaying("f_idle_neutral_04") && !animation.IsPlaying("f_gestic_talk_neutral_02")){
-			animation.Play("f_idle_neutral_04");	
+			if(!GetComponent<Animation>().IsPlaying("f_idle_neutral_04") && !GetComponent<Animation>().IsPlaying("f_gestic_talk_neutral_02")){
+			GetComponent<Animation>().Play("f_idle_neutral_04");	
 			}
 		}
 		if(Input.GetKeyUp(KeyCode.T)){
-			if(!animation.IsPlaying("f_gestic_talk_neutral_02")){
-			animation.Play("f_gestic_talk_neutral_02");	
+			if(!GetComponent<Animation>().IsPlaying("f_gestic_talk_neutral_02")){
+			GetComponent<Animation>().Play("f_gestic_talk_neutral_02");	
 			
 			}
 		}

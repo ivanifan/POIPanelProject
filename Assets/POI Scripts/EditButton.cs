@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class EditButton : MonoBehaviour {
 	public RectTransform POIEditWindow;
 	public RectTransform POIMenu;
+	public RectTransform ApplyButton;
+	public RectTransform CancelButton;
 
 	public void EditClicked(){
 
@@ -13,6 +15,10 @@ public class EditButton : MonoBehaviour {
 		POIEditWindow.gameObject.SetActive (true);
 		//change the color of the POImenu
 		POIMenu.gameObject.GetComponent<Image>().color = Color.black;
+
+		//show the apply and cancel button
+		ApplyButton.gameObject.SetActive(true);
+		CancelButton.gameObject.SetActive(true);
 
 		//pause the game
 		Time.timeScale = 0;

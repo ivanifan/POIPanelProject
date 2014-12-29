@@ -77,7 +77,7 @@ public class FixedDisplay : MonoBehaviour
         // create objects to represent left and right eye positions.
         //leftEyeObj = CreateEyeObject(-eyeOffset, camera.name + ":Left Eye");
         //rightEyeObj = CreateEyeObject(eyeOffset, camera.name + ":Right Eye");
-		eyeObj = CreateEyeObject (0, camera.name + ":Eye");
+		eyeObj = CreateEyeObject (0, GetComponent<Camera>().name + ":Eye");
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class FixedDisplay : MonoBehaviour
         // if requested show debug on wall and camera information.
         if (ShowDebug)
         {
-            Vector3 origin = camera.ViewportToScreenPoint(new Vector3(0, 1, 0));
+            Vector3 origin = GetComponent<Camera>().ViewportToScreenPoint(new Vector3(0, 1, 0));
             GUI.Box(new Rect(origin.x, 0, 300, 100), WallInfo.ToString());
             GUI.Box(new Rect(origin.x, 100, 300, 300), UpdateInfo.ToString());
         }
@@ -160,13 +160,13 @@ public class FixedDisplay : MonoBehaviour
         // Compute the L/R eye view frustums
         //leftEyeMatrix = ComputeViewFrustum(leftEyeObj);
         //rightEyeMatrix = ComputeViewFrustum(rightEyeObj);
-		if (camera.transform.localEulerAngles == Vector3.zero)
-			camera.transform.localEulerAngles = rotation.eulerAngles;
+		if (GetComponent<Camera>().transform.localEulerAngles == Vector3.zero)
+			GetComponent<Camera>().transform.localEulerAngles = rotation.eulerAngles;
 
 		eyeMatrix = ComputeViewFrustum (eyeObj);
 
 		// set projection matrix of the camera after calculating frustums
-		camera.projectionMatrix = eyeMatrix;
+		GetComponent<Camera>().projectionMatrix = eyeMatrix;
 
         // set the camera projection matrix
         //camera.SetStereoProjectionMatrices(leftEyeMatrix, rightEyeMatrix);
@@ -189,8 +189,8 @@ public class FixedDisplay : MonoBehaviour
         UpdateInfo.WriteLine("Wall Relative Eye Pos: " + wallEyePos);
 
         // calculate frustum
-        float near = camera.nearClipPlane;
-        float far = camera.farClipPlane;
+        float near = GetComponent<Camera>().nearClipPlane;
+        float far = GetComponent<Camera>().farClipPlane;
         float left = -wallEyePos.x / -wallEyePos.z * near;
         float right = (wallDef.Width - wallEyePos.x) / -wallEyePos.z * near;
         float bottom = -wallEyePos.y / -wallEyePos.z * near;

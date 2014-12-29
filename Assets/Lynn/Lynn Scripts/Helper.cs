@@ -29,16 +29,16 @@ public static class Helper
 	
 	public static ClipPlanePoints ClipPlaneAtNear(Vector3 pos){  // pos is the position of the camera
 		var ClipPlanePoints = new ClipPlanePoints();
-		if (Camera.mainCamera == null)
+		if (Camera.main == null)
 			return ClipPlanePoints;
-		var transform = Camera.mainCamera.transform;
+		var transform = Camera.main.transform;
 		
 		
 		//FOV is Field of View
-		var halfFOV = (Camera.mainCamera.fieldOfView/2)*Mathf.Deg2Rad;  // converting the FOV from degree to radiance, which is used by unity for angle calculation.
+		var halfFOV = (Camera.main.fieldOfView/2)*Mathf.Deg2Rad;  // converting the FOV from degree to radiance, which is used by unity for angle calculation.
 		
-		var aspect = Camera.mainCamera.aspect;
-		var distance = Camera.mainCamera.nearClipPlane; //distance from main camera to the near clip plane.
+		var aspect = Camera.main.aspect;
+		var distance = Camera.main.nearClipPlane; //distance from main camera to the near clip plane.
 		var height = distance * Mathf.Tan(halfFOV);
 		var width = height * aspect;
 		
