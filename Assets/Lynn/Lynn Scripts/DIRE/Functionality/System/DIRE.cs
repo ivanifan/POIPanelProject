@@ -40,22 +40,28 @@ public class DIRE : MonoBehaviour
 		//reads display configuration into settings
 		settings = displaySetupOnDisplayOrigin.LoadDisplayDefinition();
 
-		//align geometric center with "Virtual Cam for TP_camera" gameobject
-		displayGeometricCenter = displaySystemHander.calculateGeometricCenter();
-		displaySystemHander.offsetDisplayOriginByGeometricCenter();
+		//check existence of the configuration file. 
+		//missing of configuration file results in errors when calculating display geometric center 
+		if(settings.screens.Count > 0){
+			//align geometric center with "Virtual Cam for TP_camera" gameobject
+			displayGeometricCenter = displaySystemHander.calculateGeometricCenter();
+			displaySystemHander.offsetDisplayOriginByGeometricCenter();
 
-		//generate walls and eyes based on settings
-		displaySetupOnDisplayOrigin.InitializeDisplay(settings);
-		
-		
-		//****!!!Must be checked before other tracking scripts that reference DIRE.Instance.trackingActive
-		//detect if receiving tracking data, if not, set up the cam to regular cam
-		trackingActive = GetComponent<ARTtrack>().checkTracking();
+			//generate walls and eyes based on settings
+			displaySetupOnDisplayOrigin.InitializeDisplay(settings);
+			
+			//****!!!Must be checked before other tracking scripts that reference DIRE.Instance.trackingActive
+			//detect if receiving tracking data, if not, set up the cam to regular cam
+			trackingActive = GetComponent<ARTtrack>().checkTracking();
 
-		if(!trackingActive){
-			displaySystemHander.offsetHeadToGeometricCenter();
+			if(!trackingActive){
+				Debug.Log("tracking inactive!");
+				displaySystemHander.offsetHeadToGeometricCenter();
+			}
+		}else
+		{
+			Debug.LogWarning("Warning: no display configuration file!");
 		}
-
 
 	}
 

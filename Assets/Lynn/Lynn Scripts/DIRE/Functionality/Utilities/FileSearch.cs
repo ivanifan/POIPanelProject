@@ -12,8 +12,8 @@ class FileSearch : List <string>
 	/// Default search for display definitions
 	/// </summary>
 	public static FileSearch DisplaySearch;
-	public static FileSearch ContentSearch;
-	public static FileSearch InputSearch;
+	//public static FileSearch ContentSearch;
+	//public static FileSearch InputSearch;
 
 	static FileSearch()
 	{	
@@ -33,6 +33,7 @@ class FileSearch : List <string>
 		string inputSubDir = "/Settings/Inputs";
 
 		DisplaySearch = new FileSearch();
+		//search priority is C: + programDir > Directory.GetCurrentDirectory > Application.dataPath
 		DisplaySearch.Add( Application.dataPath);
 		DisplaySearch.Add( Directory.GetCurrentDirectory());
 		DisplaySearch.Add("C:" + programDir);

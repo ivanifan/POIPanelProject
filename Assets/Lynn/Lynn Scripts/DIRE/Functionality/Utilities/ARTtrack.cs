@@ -25,11 +25,6 @@ public class ARTtrack : MonoBehaviour {
 		return (client.Available > 0);
 	}
 
-	IEnumerator waitTrackingData(){
-		Debug.Log("before yield: " + Time.realtimeSinceStartup);
-		yield return new WaitForSeconds(1f);
-	}
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,22 +32,34 @@ public class ARTtrack : MonoBehaviour {
 		body_rotation_vector = Vector3.zero;
 		//data = client.Receive( ref source );
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
-		//check if tracking data exist
-		if(DIRE.Instance.trackingActive){
-		byte[] data = client.Receive(ref source);
+		try{
+			//check if tracking data exist
+			if(DIRE.Instance.trackingActive){
+				if(client == null) {
+					DIRE.Instance.trackingActive = false;
+					throw new Exception("client reference is not set to an instance!");
+				}
+				if(source ==null) {
+					DIRE.Instance.trackingActive = false;
+					throw new Exception("source reference is not set to an instance!");
+				}
+				byte[] data = client.Receive(ref source);
+				//flush the port by reading through all available data till the most recent one
+				while(client.Available > 0){
+					data = client.Receive( ref source );
+				}
+					
+					string text = System.Text.Encoding.ASCII.GetString(data);			
+					parser (text);
+					Debug.Log(text);
+			}
 
-		//flush the port by reading through all available data till the most recent one
-		while(client.Available > 0){
-			data = client.Receive( ref source );
-			Debug.Log("inside while");
-		}
-			
-			string text = System.Text.Encoding.ASCII.GetString(data);			
-			parser (text);
-			Debug.Log(text);
+		}catch(Exception ex){
+			Debug.Log(ex.Message);
 		}
 	}
 	

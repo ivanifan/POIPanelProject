@@ -88,7 +88,7 @@ public class DisplaySetup : MonoBehaviour
 			Debug.LogWarning( "Unable to load display: " + displayToLoad );
 			Debug.LogWarning( "Using default display" );
 
-			settings = DisplaySettings.DefaultDisplay;
+			settings = DisplaySettings.DefaultDisplay; //default display is an empty displaysettings class(see displayXML.cs), it does not containa any screen information.
 		}
 
 		XmlIO.Save( settings, "_Display.xml" );
