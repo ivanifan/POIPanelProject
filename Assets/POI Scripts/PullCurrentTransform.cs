@@ -9,15 +9,13 @@ public class PullCurrentTransform : MonoBehaviour {
     public List<InputField> poiTransformFields = new List<InputField>();
 
 	void Start(){
-		if(poiTransformFields.Count != 6 ){
+		if(poiTransformFields.Count != 4 ){
 			poiTransformFields = new List<InputField>();
 			Debug.Log("field count: " + poiTransformFields.Count);
 			poiTransformFields.Add(transform.parent.FindChild("XPosField").GetComponent<InputField>());
 			poiTransformFields.Add(transform.parent.FindChild("YPosField").GetComponent<InputField>());
 			poiTransformFields.Add(transform.parent.FindChild("ZPosField").GetComponent<InputField>());
-			poiTransformFields.Add(transform.parent.FindChild("XRotField").GetComponent<InputField>());
 			poiTransformFields.Add(transform.parent.FindChild("YRotField").GetComponent<InputField>());
-			poiTransformFields.Add(transform.parent.FindChild("ZRotField").GetComponent<InputField>());
 		}
 	}
 
@@ -28,9 +26,7 @@ public class PullCurrentTransform : MonoBehaviour {
         poiTransformFields[0].value = characterTransform.position.x.ToString();
         poiTransformFields[1].value = characterTransform.position.y.ToString();
         poiTransformFields[2].value = characterTransform.position.z.ToString();
-        poiTransformFields[3].value = characterTransform.rotation.x.ToString();
-        poiTransformFields[4].value = characterTransform.rotation.y.ToString();
-        poiTransformFields[5].value = characterTransform.rotation.z.ToString();
+        poiTransformFields[3].value = characterTransform.rotation.y.ToString();
         
     }
 }
