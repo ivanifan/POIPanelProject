@@ -17,7 +17,7 @@ using System.Collections;
 ///                  
 /// </summary>
 /// 
-
+ 
 public class MouseNavigator : MonoBehaviour 
 {
 	/// <summary>
@@ -48,7 +48,7 @@ public class MouseNavigator : MonoBehaviour
 		return( new Vector2(Input.mousePosition[0], 
                             Input.mousePosition[1] ) );
 	}
-	
+	 
 	// Update is called once per frame
 	void Update () 
 	{
