@@ -12,28 +12,16 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 public static class XmlIO
 {
-	public static Type[] allTypes
-	{
-		get
-		{
-			// need to add all types we want to be able to serialize to the types array
-			// this array is used in preference manager so that the menu to add a field/property only displays fields/properties of types that can be serialized
-			Type[] types = new Type[]{typeof(Vector3), typeof(Quaternion),typeof(List<int>),typeof(List<float>), typeof(List<string>), typeof(string), typeof(float)};
-			return types;
-		}
-	}
-
 	public static object Load( string path, Type type )
 	{
 		object thing = null;
 
 		XmlTextReader reader = new XmlTextReader( path );
-		XmlSerializer serializer = new  XmlSerializer( type, allTypes);
+		XmlSerializer serializer = new  XmlSerializer( type );
 		thing = serializer.Deserialize( reader );
 		reader.Close();
 
@@ -44,7 +32,7 @@ public static class XmlIO
 	{
 		XmlTextWriter writer = new XmlTextWriter( path, Encoding.ASCII );
 		writer.Formatting = Formatting.Indented;
-		XmlSerializer serializer = new XmlSerializer( thing.GetType(), allTypes );
+		XmlSerializer serializer = new XmlSerializer( thing.GetType() );
 		serializer.Serialize( writer, thing );
 		writer.Close();
 	}
