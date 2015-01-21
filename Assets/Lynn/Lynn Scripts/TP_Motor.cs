@@ -64,7 +64,6 @@ public class TP_Motor : MonoBehaviour {
 			ApplyGravity();
 		}
 		
-		
 		// Move the character in world space
 		TP_Controller.characterController.Move (MoveVector * Time.deltaTime);
 	}

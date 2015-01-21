@@ -45,13 +45,12 @@ public class TP_Controller : MonoBehaviour {
 		if(Input.GetMouseButton(2))
 			TP_Motor.Instance.MoveVector += new Vector3(0,0,1);
 
-		
 		//when tracking xbox controller, press A to move to the direction of pointing
 		if(Input.GetAxis("XboxPointGo") == 1){
 			Vector3 moveDirection = new Vector3(DIRE.Instance.Hand.transform.forward.x, 0, DIRE.Instance.Hand.transform.forward.z);
 			moveDirection = moveDirection.normalized;
 			TP_Motor.Instance.MoveVector += moveDirection;
-	
+			
 		}
 
 		if(!TP_Motor.Instance.gravityOn){

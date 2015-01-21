@@ -26,7 +26,7 @@ public class PullCurrentTransform : MonoBehaviour {
         poiTransformFields[0].value = characterTransform.position.x.ToString();
         poiTransformFields[1].value = characterTransform.position.y.ToString();
         poiTransformFields[2].value = characterTransform.position.z.ToString();
-        poiTransformFields[3].value = characterTransform.rotation.y.ToString();
+        poiTransformFields[3].value = characterTransform.rotation.eulerAngles.y.ToString();
         
     }
 }

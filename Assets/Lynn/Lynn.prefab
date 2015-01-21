@@ -1922,7 +1922,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400254}
-  - 114: {fileID: 11400004}
   - 120: {fileID: 12000000}
   m_Layer: 0
   m_Name: Hand
@@ -2016,7 +2015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -2042,7 +2041,7 @@ Transform:
   m_Children:
   - {fileID: 400092}
   m_Father: {fileID: 400200}
-  m_RootOrder: 16
+  m_RootOrder: 5
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -2098,7 +2097,7 @@ Transform:
   - {fileID: 400132}
   - {fileID: 400188}
   m_Father: {fileID: 400200}
-  m_RootOrder: 11
+  m_RootOrder: 16
 --- !u!4 &400012
 Transform:
   m_ObjectHideFlags: 1
@@ -2123,7 +2122,7 @@ Transform:
   m_Children:
   - {fileID: 400226}
   m_Father: {fileID: 400200}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!4 &400016
 Transform:
   m_ObjectHideFlags: 1
@@ -2148,7 +2147,7 @@ Transform:
   m_Children:
   - {fileID: 400064}
   m_Father: {fileID: 400200}
-  m_RootOrder: 10
+  m_RootOrder: 14
 --- !u!4 &400020
 Transform:
   m_ObjectHideFlags: 1
@@ -2209,7 +2208,7 @@ Transform:
   m_Children:
   - {fileID: 400114}
   m_Father: {fileID: 400200}
-  m_RootOrder: 4
+  m_RootOrder: 21
 --- !u!4 &400030
 Transform:
   m_ObjectHideFlags: 1
@@ -2427,7 +2426,7 @@ Transform:
   m_LocalScale: {x: .5, y: 1, z: .5}
   m_Children: []
   m_Father: {fileID: 400240}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &400064
 Transform:
   m_ObjectHideFlags: 1
@@ -2465,7 +2464,7 @@ Transform:
   m_Children:
   - {fileID: 400178}
   m_Father: {fileID: 400200}
-  m_RootOrder: 9
+  m_RootOrder: 15
 --- !u!4 &400070
 Transform:
   m_ObjectHideFlags: 1
@@ -2495,7 +2494,7 @@ Transform:
   m_Children:
   - {fileID: 400026}
   m_Father: {fileID: 400200}
-  m_RootOrder: 13
+  m_RootOrder: 10
 --- !u!4 &400074
 Transform:
   m_ObjectHideFlags: 1
@@ -2725,7 +2724,7 @@ Transform:
   m_Children:
   - {fileID: 400174}
   m_Father: {fileID: 400200}
-  m_RootOrder: 19
+  m_RootOrder: 7
 --- !u!4 &400110
 Transform:
   m_ObjectHideFlags: 1
@@ -2738,7 +2737,7 @@ Transform:
   m_Children:
   - {fileID: 400180}
   m_Father: {fileID: 400200}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!4 &400112
 Transform:
   m_ObjectHideFlags: 1
@@ -2789,7 +2788,7 @@ Transform:
   m_Children:
   - {fileID: 400016}
   m_Father: {fileID: 400200}
-  m_RootOrder: 3
+  m_RootOrder: 13
 --- !u!4 &400120
 Transform:
   m_ObjectHideFlags: 1
@@ -2906,7 +2905,7 @@ Transform:
   m_Children:
   - {fileID: 400102}
   m_Father: {fileID: 400200}
-  m_RootOrder: 20
+  m_RootOrder: 19
 --- !u!4 &400138
 Transform:
   m_ObjectHideFlags: 1
@@ -2957,7 +2956,7 @@ Transform:
   m_Children:
   - {fileID: 400140}
   m_Father: {fileID: 400200}
-  m_RootOrder: 15
+  m_RootOrder: 17
 --- !u!4 &400146
 Transform:
   m_ObjectHideFlags: 1
@@ -2969,7 +2968,7 @@ Transform:
   m_LocalScale: {x: .000489167287, y: .000355365744, z: .000586077222}
   m_Children: []
   m_Father: {fileID: 400240}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!4 &400148
 Transform:
   m_ObjectHideFlags: 1
@@ -3069,7 +3068,7 @@ Transform:
   m_Children:
   - {fileID: 400176}
   m_Father: {fileID: 400200}
-  m_RootOrder: 21
+  m_RootOrder: 20
 --- !u!4 &400164
 Transform:
   m_ObjectHideFlags: 1
@@ -3106,7 +3105,7 @@ Transform:
   m_Children:
   - {fileID: 400078}
   m_Father: {fileID: 400200}
-  m_RootOrder: 14
+  m_RootOrder: 11
 --- !u!4 &400170
 Transform:
   m_ObjectHideFlags: 1
@@ -3310,25 +3309,25 @@ Transform:
   - {fileID: 400220}
   - {fileID: 400116}
   - {fileID: 400148}
-  - {fileID: 400118}
-  - {fileID: 400028}
-  - {fileID: 400246}
   - {fileID: 400110}
-  - {fileID: 400014}
   - {fileID: 400204}
-  - {fileID: 400068}
-  - {fileID: 400018}
-  - {fileID: 400010}
+  - {fileID: 400002}
   - {fileID: 400212}
+  - {fileID: 400108}
+  - {fileID: 400246}
+  - {fileID: 400014}
   - {fileID: 400072}
   - {fileID: 400168}
-  - {fileID: 400144}
-  - {fileID: 400002}
   - {fileID: 400228}
+  - {fileID: 400118}
+  - {fileID: 400018}
+  - {fileID: 400068}
+  - {fileID: 400010}
+  - {fileID: 400144}
   - {fileID: 400046}
-  - {fileID: 400108}
   - {fileID: 400136}
   - {fileID: 400162}
+  - {fileID: 400028}
   - {fileID: 400128}
   - {fileID: 400238}
   - {fileID: 400004}
@@ -3359,7 +3358,7 @@ Transform:
   m_Children:
   - {fileID: 400012}
   m_Father: {fileID: 400200}
-  m_RootOrder: 8
+  m_RootOrder: 4
 --- !u!4 &400206
 Transform:
   m_ObjectHideFlags: 1
@@ -3411,7 +3410,7 @@ Transform:
   m_Children:
   - {fileID: 400020}
   m_Father: {fileID: 400200}
-  m_RootOrder: 12
+  m_RootOrder: 6
 --- !u!4 &400214
 Transform:
   m_ObjectHideFlags: 1
@@ -3512,7 +3511,7 @@ Transform:
   m_Children:
   - {fileID: 400156}
   m_Father: {fileID: 400200}
-  m_RootOrder: 17
+  m_RootOrder: 12
 --- !u!4 &400230
 Transform:
   m_ObjectHideFlags: 1
@@ -3583,14 +3582,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100240}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.1058559, y: .4510746, z: 20.9099808}
+  m_LocalPosition: {x: -10.1099997, y: .75, z: 20.9099998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400134}
   - {fileID: 400160}
-  - {fileID: 400146}
   - {fileID: 400264}
   - {fileID: 400062}
+  - {fileID: 400146}
   - {fileID: 400262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3630,7 +3629,7 @@ Transform:
   m_Children:
   - {fileID: 400194}
   m_Father: {fileID: 400200}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!4 &400248
 Transform:
   m_ObjectHideFlags: 1
@@ -3744,7 +3743,7 @@ Transform:
   m_LocalScale: {x: .200000003, y: 1, z: .200000003}
   m_Children: []
   m_Father: {fileID: 400240}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -3795,7 +3794,7 @@ MeshRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_LightmapTilingOffsetDynamic: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a9e22cc376422ce4ca10d85f1682e529, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3898,27 +3897,6 @@ MonoBehaviour:
   MaxControllableSlideMagnitude: .400000006
   gravityOn: 0
   virtualCamera: {fileID: 400262}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cff14b471ff55646bc1c0c9d38f86bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayInGame: {fileID: 12000000}
-  Hand: {fileID: 400254}
-  direction: {x: 0, y: 0, z: 0}
-  MaterialsOnObject: []
-  originalColor: []
-  objectHitByRay: {fileID: 0}
-  displayName: 
-  infoGUItext: {fileID: 0}
-  distanceFromCamToClickedObject: 0
-  triggerPulled: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3951,7 +3929,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e97fb7238467349ba32721a1e4d284, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ae6cbcfd1ae1da4dbc9d15236740fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body_position_vector: {x: 0, y: 0, z: 0}
@@ -3964,10 +3942,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76cdcaeac0408b845a41f3cf5cae77df, type: 3}
+  m_Script: {fileID: 11500000, guid: 2573c1e6bc9ce2448b91fc4ad1a0ed1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCam: {fileID: 2000000, guid: 162b19fe70f0c8f499efdb7acee770ba, type: 2}
+  baseCam: {fileID: 2000000, guid: 99ba3ff0dd1d4f644aa98bcd91407446, type: 2}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3976,14 +3954,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e117b1e0180f0514a876958c720ee95b, type: 3}
+  m_Script: {fileID: 11500000, guid: 58775dc95684d6d4c91c40dfefcef813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayOrigin: {fileID: 100260}
   Head: {fileID: 100256}
   Hand: {fileID: 100254}
   displayGeometricCenter: {x: 0, y: 0, z: 0}
-  trackingActive: 1
+  trackingActive: 0
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4035,7 +4013,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b5347983a8c1f42966ddd1b5647d3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1980d3585c5d8034ca29210196fbfcec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfView_oneScreen: 60
