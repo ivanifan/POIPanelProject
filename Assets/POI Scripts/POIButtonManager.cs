@@ -37,35 +37,12 @@ public class POIButtonManager : MonoBehaviour {
 	                   {
 	                       foreach (POI point in sceneList)
 	                       {
-	                           GameObject newButton = Instantiate(buttonPrefab) as GameObject;
-	                           RectTransform buttonRectTransform = newButton.transform as RectTransform;
-	                           buttonRectTransform.parent = POIList;
-	                           buttonRectTransform.localPosition = new Vector3(7.0f, -7.0f + NumOfButtons * (-buttonRectTransform.rect.height - 7.0f), 0.0f);
-	                           
-	                           newButton.GetComponent<POIInfo>().Point = point;
-	                           newButton.transform.GetComponentInChildren<Text>().text = point.buttonName;
-	                           NumOfButtons++;
-	                           POIlistHeight += buttonRectTransform.rect.height + 7.0f;
-
-									// code to add a listener to the button OnClicked() event
-									EventTrigger eTrigger = newButton.GetComponent<EventTrigger>();
-									EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
-
-									// The following line adds the POIClicked function as a listener to the EventTrigger on the button we instantiated.
-									trigger.AddListener((eventData)=>GetComponent<POIActiveButtonManager>().POIClicked (newButton));
-
-									// The next line adds the entry we created to the Event Trigger of the instantiated button.
-									// The entry consists of two parts, the listener we set up earlier, and the EventTriggerType.
-									// The EventTriggerType tells the EventTrigger when to send out the message that the event has occured.
-									// We use PointerClick so we know when the used has clicked on a button.
-									EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
-									eTrigger.delegates.Add(entry);
-
-                               }
-                               POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-                               POIList.localPosition = Vector3.zero;
-                           }
-                       });
+								CreateNewButton(point);
+                       	   }
+                           POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+                           POIList.localPosition = Vector3.zero;
+                   		}
+               	});
             }
             else
             {
@@ -83,5 +60,31 @@ public class POIButtonManager : MonoBehaviour {
         
 	}// start
 
+	public void CreateNewButton(POI point)
+	{
+		GameObject newButton = Instantiate(buttonPrefab) as GameObject;
+		RectTransform buttonRectTransform = newButton.transform as RectTransform;
+		buttonRectTransform.parent = POIList;
+		buttonRectTransform.localPosition = new Vector3(7.0f, -7.0f + NumOfButtons * (-buttonRectTransform.rect.height - 7.0f), 0.0f);
+		
+		newButton.GetComponent<POIInfo>().Point = point;
+		newButton.transform.GetComponentInChildren<Text>().text = point.buttonName;
+		NumOfButtons++;
+		POIlistHeight += buttonRectTransform.rect.height + 7.0f;
+		
+		// code to add a listener to the button OnClicked() event
+		EventTrigger eTrigger = newButton.GetComponent<EventTrigger>();
+		EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
+		
+		// The following line adds the POIClicked function as a listener to the EventTrigger on the button we instantiated.
+		trigger.AddListener((eventData)=>GetComponent<POIActiveButtonManager>().POIClicked (newButton));
+		
+		// The next line adds the entry we created to the Event Trigger of the instantiated button.
+		// The entry consists of two parts, the listener we set up earlier, and the EventTriggerType.
+		// The EventTriggerType tells the EventTrigger when to send out the message that the event has occured.
+		// We use PointerClick so we know when the used has clicked on a button.
+		EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
+		eTrigger.delegates.Add(entry);
+	}
 
 }
