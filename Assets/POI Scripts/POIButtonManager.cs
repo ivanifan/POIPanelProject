@@ -8,7 +8,7 @@ using System.Linq;
 public class POIButtonManager : MonoBehaviour {
 
 
-    public POIHandler handler = new POIHandler();
+    public static POIHandler handler = new POIHandler();
     // variable to hold the initial button and poi data when the application starts
     // will have an option in the poi menu to restore the original values
     public POIHandler restoreHandler = new POIHandler();
@@ -32,7 +32,6 @@ public class POIButtonManager : MonoBehaviour {
                     Destroy(child.gameObject);
                 }
                 handler = XmlIO.Load(path, typeof(POIHandler)) as POIHandler;
-
                 
                 handler.projectPOIs.Where(x => x.Count > 0)
                        .ToList()
