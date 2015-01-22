@@ -64,6 +64,26 @@ public class POIHandler
 
     }
 
+	public void RemovePoint(POI point)
+	{
+		foreach(List<POI> sceneList in projectPOIs)
+		{
+			if(sceneList[0].sceneFlag == point.sceneFlag)
+			{
+				foreach(POI scenePoint in sceneList)
+				{
+					if(point == scenePoint)
+					{
+						sceneList.Remove(point);
+						if(sceneList.Count == 0)
+							projectPOIs.Remove(sceneList);
+						break;
+					}
+				}
+			}
+		}
+	}
+
     public POIHandler()
     {
         projectPOIs = new List<List<POI>>();

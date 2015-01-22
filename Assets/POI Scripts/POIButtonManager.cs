@@ -87,4 +87,18 @@ public class POIButtonManager : MonoBehaviour {
 		eTrigger.delegates.Add(entry);
 	}
 
+	public void RemoveButton(GameObject buttonToRemove)
+	{
+		float yThreshhold = buttonToRemove.transform.position.y;
+		for(int i = 0; i < NumOfButtons; i++)
+		{
+			if(buttonToRemove.transform.parent.GetChild(i).position.y < yThreshhold)
+			{
+				buttonToRemove.transform.parent.GetChild(i).position += new Vector3(0,37,0);
+			}
+		}
+		GameObject.Destroy(buttonToRemove);
+		NumOfButtons--;
+	}
+
 }
