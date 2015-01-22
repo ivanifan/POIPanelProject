@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.EventSystems;
 
 public class POIButtonManager : MonoBehaviour {
-
+	
     public static POIHandler handler = new POIHandler();
 
     // variable to hold the initial button and poi data when the application starts
@@ -20,19 +20,16 @@ public class POIButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
-        // load the POIs from the xml file given by the path variable into the POIHandler member
-        string path = Application.dataPath + "/POIHandler.xml";
 
         if (Application.isEditor)
         {
-            if (File.Exists(path))
+            if (File.Exists(POI_GlobalVariables.XMLpath))
             {
                 foreach (Transform child in POIList.transform)
                 {
                     Destroy(child.gameObject);
                 }
-                handler = XmlIO.Load(path, typeof(POIHandler)) as POIHandler;
+                handler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
                 
                 handler.projectPOIs.Where(scenePOILists => scenePOILists.Count > 0)
                        .ToList()
@@ -80,7 +77,7 @@ public class POIButtonManager : MonoBehaviour {
                     handler.AddPoint(child.GetComponent<POIInfo>().Point);
                 }
 
-                XmlIO.Save(handler, path);
+                XmlIO.Save(handler, POI_GlobalVariables.XMLpath);
             }
         }
 	}// start
