@@ -25,25 +25,25 @@ RenderSettings:
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
   m_AmbientSkyboxAmount: 1
   m_AmbientProbe:
-    sh[0]: {x: 1.31153071, y: 1.67723131, z: 2.11886811}
-    sh[1]: {x: .221335381, y: .129355937, z: .0683593601}
+    sh[0]: {x: 1.31152451, y: 1.67723489, z: 2.11887264}
+    sh[1]: {x: .301461726, y: -.110256895, z: -.552203357}
     sh[2]: {x: 0, y: 0, z: 0}
-    sh[3]: {x: 5.85025084e-10, y: 3.31506655e-10, z: 9.9315578e-10}
-    sh[4]: {x: -5.24771893e-10, y: 1.22689303e-09, z: 2.1036346e-09}
-    sh[5]: {x: 3.7252903e-09, y: -3.7252903e-09, z: -1.49011612e-08}
-    sh[6]: {x: .244531274, y: .208228171, z: .180939615}
-    sh[7]: {x: -5.32047739e-11, y: 4.41099379e-11, z: -6.59374777e-11}
-    sh[8]: {x: .423549235, y: .360669136, z: .313393712}
+    sh[3]: {x: 6.01395822e-10, y: 3.89713595e-10, z: 7.60327912e-10}
+    sh[4]: {x: -5.35685607e-10, y: 1.2850998e-09, z: 2.33646258e-09}
+    sh[5]: {x: 4.65661287e-09, y: 0, z: 0}
+    sh[6]: {x: .244536638, y: .20822829, z: .180940032}
+    sh[7]: {x: -7.13944459e-11, y: 1.0231687e-10, z: 5.04762898e-11}
+    sh[8]: {x: .423545539, y: .360667765, z: .313395381}
   m_AmbientProbeInGamma:
-    sh[0]: {x: .54761076, y: .805541456, z: 1.37954831}
-    sh[1]: {x: .0791217163, y: .11239589, z: .147379279}
+    sh[0]: {x: .547612786, y: .805540442, z: 1.37954688}
+    sh[1]: {x: .100971915, y: -.103394598, z: -.581308961}
     sh[2]: {x: 0, y: 0, z: 0}
-    sh[3]: {x: 3.22468663e-10, y: 1.44153092e-10, z: 7.190602e-10}
-    sh[4]: {x: 1.27384492e-10, y: 7.00415836e-10, z: -8.36156089e-10}
+    sh[3]: {x: 3.24287625e-10, y: 1.29601357e-10, z: 7.19060256e-10}
+    sh[4]: {x: 1.3193191e-10, y: 6.85864088e-10, z: -8.36156144e-10}
     sh[5]: {x: 1.16415322e-09, y: 0, z: 0}
-    sh[6]: {x: .167598128, y: .218214273, z: .262488902}
-    sh[7]: {x: 2.83644774e-11, y: 3.52423646e-12, z: -8.76515527e-11}
-    sh[8]: {x: .290287077, y: .377956808, z: .454640895}
+    sh[6]: {x: .167598426, y: .218213677, z: .262489915}
+    sh[7]: {x: 2.42718345e-11, y: 3.52429197e-12, z: -1.45858436e-10}
+    sh[8]: {x: .290282905, y: .377955794, z: .454639286}
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: .5
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6dac27c3e98e7840b31a7e639619eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultName: 
+  defaultName: New Button
   defaultPosition: {x: 0, y: 0, z: 0}
   defaultRotation: 0
 --- !u!1 &719423018
@@ -3808,14 +3808,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-=======
       - m_Target: {fileID: 1928007466}
         m_MethodName: RemovePointFromMenuAndHandler
         m_Mode: 1
@@ -3823,7 +3815,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
->>>>>>> FETCH_HEAD
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
