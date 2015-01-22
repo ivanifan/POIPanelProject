@@ -10,7 +10,7 @@ public class EditButton : MonoBehaviour {
 
 	public void EditClicked(){
 
-		POIMenuStateManager.editModeState = true;
+		POIMenuStateManager.EditModeState = true;
 		//show the edit window
 		POIEditWindow.gameObject.SetActive (true);
 		//change the color of the POImenu

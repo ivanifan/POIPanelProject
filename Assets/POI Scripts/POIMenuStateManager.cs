@@ -3,10 +3,16 @@ using System.Collections;
 
 public class POIMenuStateManager : MonoBehaviour {
 
-	public static bool editModeState = false;
 
-	public void ToggleEditMode()
-	{
-		editModeState = !editModeState;
+	public static bool EditModeState{
+		get{
+			return EditModeState; //default of bool is faulse, no need to initialize
+		}
+		set{
+			EditModeState = value;
+		}
 	}
+
+
+
 }
