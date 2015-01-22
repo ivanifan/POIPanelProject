@@ -54,7 +54,14 @@ public class POIButtonManager : MonoBehaviour {
 									// code to add a listener to the button OnClicked() event
 									EventTrigger eTrigger = newButton.GetComponent<EventTrigger>();
 									EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
-									trigger.AddListener((eventData)=>POIClicked (newButton));
+
+									// The following line adds the POIClicked function as a listener to the EventTrigger on the button we instantiated.
+									trigger.AddListener((eventData)=>GetComponent<POIActiveButtonManager>().POIClicked (newButton));
+
+									// The next line adds the entry we created to the Event Trigger of the instantiated button.
+									// The entry consists of two parts, the listener we set up earlier, and the EventTriggerType.
+									// The EventTriggerType tells the EventTrigger when to send out the message that the event has occured.
+									// We use PointerClick so we know when the used has clicked on a button.
 									EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
 									eTrigger.delegates.Add(entry);
                                }
@@ -78,10 +85,6 @@ public class POIButtonManager : MonoBehaviour {
         }
 	}// start
 
-	void POIClicked(GameObject clicked)
-	{
-		clicked.GetComponent<Button>().image.color = Color.red;
-	}
 
 
 }
