@@ -2178,8 +2178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99240c261ba6d4b48ae9bc76828c488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  POIEditWindow: {fileID: 1152643941}
-  POIMenu: {fileID: 1814761933}
   ApplyButton: {fileID: 1649593351}
   CancelButton: {fileID: 265393293}
 --- !u!1 &1152643940
