@@ -6,10 +6,10 @@ public class EditButton : MonoBehaviour {
 	/*
 	public RectTransform POIEditWindow;
 	public RectTransform POIMenu;
-	*/
+
 	public RectTransform ApplyButton;
 	public RectTransform CancelButton;
-
+*/
 
 
 	public void EditClicked(){
@@ -21,8 +21,8 @@ public class EditButton : MonoBehaviour {
 		POI_ReferenceHub.POIMenu.gameObject.GetComponent<Image>().color = Color.black;
 
 		//show the apply and cancel button
-		ApplyButton.gameObject.SetActive(true);
-		CancelButton.gameObject.SetActive(true);
+		POI_ReferenceHub.ApplyBut.gameObject.SetActive(true);
+		POI_ReferenceHub.CancelBut.gameObject.SetActive(true);
 
 		//pause the game
 		Time.timeScale = 0;

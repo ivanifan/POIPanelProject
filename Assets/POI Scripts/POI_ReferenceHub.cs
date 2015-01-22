@@ -2,17 +2,24 @@
 using System.Collections;
 using System;
 
-public class POI_ReferenceHub {
+public class POI_ReferenceHub{
 
-	public static RectTransform POIMenu;
-	public static RectTransform POIEditWindow;
+	public  static RectTransform POIMenu;
+	public  static RectTransform POIEditWindow;
+	public  static RectTransform ApplyBut;
+	public  static RectTransform CancelBut;
+	public  static RectTransform EditBut;
 
 	static POI_ReferenceHub(){
 		try{
 
 			POIMenu = GameObject.Find("POIMenu").GetComponent<RectTransform>();
+			Debug.Log("POIEditWindow: " + POIEditWindow);
 			POIEditWindow = GameObject.Find("POIEditWindow").GetComponent<RectTransform>();
-
+			Debug.Log("POIEditWindow: " + POIEditWindow);
+			ApplyBut = POIMenu.FindChild("Apply").GetComponent<RectTransform>();
+			CancelBut = POIMenu.FindChild("Cancel").GetComponent<RectTransform>();
+			EditBut = POIMenu.FindChild("EditButton").GetComponent<RectTransform>();
 		}
 		catch(UnityException ex){  //try to catch the situation when GameObject.Find returns null
 			Debug.Log(ex.Message);
