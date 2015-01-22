@@ -74,7 +74,7 @@ public class POIButtonManager : MonoBehaviour {
             {
                 foreach (Transform child in POIList.transform)
                 {
-                    handler.AddPoint(child.GetComponent<POIInfo>().Point);
+					handler.AddPoint(child.GetComponent<POIInfo>().Point);
                 }
 
                 XmlIO.Save(handler, POI_GlobalVariables.XMLpath);
