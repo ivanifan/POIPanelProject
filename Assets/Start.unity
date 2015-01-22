@@ -3664,6 +3664,7 @@ MonoBehaviour:
   zPosField: {fileID: 1127868419}
   yRotField: {fileID: 952416567}
   nameField: {fileID: 1254830213}
+  activeButton: {fileID: 0}
 --- !u!1 &1912185088
 GameObject:
   m_ObjectHideFlags: 0
@@ -3742,6 +3743,7 @@ GameObject:
   - 222: {fileID: 1928007465}
   - 114: {fileID: 1928007464}
   - 114: {fileID: 1928007463}
+  - 114: {fileID: 1928007466}
   m_Layer: 5
   m_Name: DeletePoint
   m_TagString: Untagged
@@ -3806,12 +3808,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD
       - m_Target: {fileID: 0}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
+=======
+      - m_Target: {fileID: 1928007466}
+        m_MethodName: RemovePointFromMenuAndHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+>>>>>>> FETCH_HEAD
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3847,6 +3859,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928007461}
   m_HideIfInvisible: 0
+--- !u!114 &1928007466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1928007461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5d004defd0c914f943fbd976c240c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067021212
 GameObject:
   m_ObjectHideFlags: 0

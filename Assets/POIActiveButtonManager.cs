@@ -9,7 +9,7 @@ public class POIActiveButtonManager : MonoBehaviour {
 
 	public InputField xPosField, yPosField, zPosField, yRotField, nameField;
 
-	private GameObject activeButton = null;
+	public GameObject activeButton = null;
 
 	// This function is called whenver a button is clicked.  
 	// The EventTrigger and Listener were set up when the button was instantiated in POIButtonManager.cs.
