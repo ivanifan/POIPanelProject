@@ -8,8 +8,6 @@ public class POIInfo : MonoBehaviour {
     public Vector3 position;
     public Vector3 rotation;
 
-	private POI point = new POI();
-
     public POI Point{
      get{
 
@@ -30,5 +28,5 @@ public class POIInfo : MonoBehaviour {
         }
     }
 
-   
+    private POI point;
 }

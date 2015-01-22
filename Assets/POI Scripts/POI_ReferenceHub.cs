@@ -9,10 +9,10 @@ public class POI_ReferenceHub {
 
 	static POI_ReferenceHub(){
 		try{
-
-			POIMenu = GameObject.Find("POIMenu").GetComponent<RectTransform>();
-			POIEditWindow = GameObject.Find("POIEditWindow").GetComponent<RectTransform>();
-
+			/*
+			POIMenu = GameObject.Find("POIMenu") as RectTransform;
+			POIEditWindow = GameObject.Find("POIEditWindow") as RectTransform;
+			*/
 		}
 		catch(UnityException ex){  //try to catch the situation when GameObject.Find returns null
 			Debug.Log(ex.Message);

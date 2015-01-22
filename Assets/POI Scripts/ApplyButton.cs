@@ -1,12 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class ApplyButton : MonoBehaviour {
 
 	public void applyChangesToXML(){
-
-		XmlIO.Save(POIButtonManager.editHandler, POI_GlobalVariables.XMLpath);
-
+		XmlIO.Save(POIButtonManager.handler, POI_GlobalVariables.XMLpath);
 
 	}
 }
