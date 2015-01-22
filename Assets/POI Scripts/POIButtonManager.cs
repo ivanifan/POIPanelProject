@@ -4,9 +4,9 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class POIButtonManager : MonoBehaviour {
-
 
     public POIHandler handler = new POIHandler();
     // variable to hold the initial button and poi data when the application starts
@@ -34,12 +34,12 @@ public class POIButtonManager : MonoBehaviour {
                 handler = XmlIO.Load(path, typeof(POIHandler)) as POIHandler;
 
                 
-                handler.projectPOIs.Where(x => x.Count > 0)
+                handler.projectPOIs.Where(scenePOILists => scenePOILists.Count > 0)
                        .ToList()
-                       .ForEach(x => {
-                           if(x[0].sceneFlag == Application.loadedLevelName)
+                       .ForEach(sceneList => {
+                           if(sceneList[0].sceneFlag == Application.loadedLevelName)
                            {
-                               foreach (POI point in x)
+                               foreach (POI point in sceneList)
                                {
                                    GameObject newButton = Instantiate(buttonPrefab) as GameObject;
                                    RectTransform buttonRectTransform = newButton.transform as RectTransform;
@@ -50,6 +50,13 @@ public class POIButtonManager : MonoBehaviour {
                                    newButton.transform.GetComponentInChildren<Text>().text = point.buttonName;
                                    NumOfButtons++;
                                    POIlistHeight += buttonRectTransform.rect.height + 7.0f;
+
+									// code to add a listener to the button OnClicked() event
+									EventTrigger eTrigger = newButton.GetComponent<EventTrigger>();
+									EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
+									trigger.AddListener((eventData)=>POIClicked (newButton));
+									EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
+									eTrigger.delegates.Add(entry);
                                }
                                POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
                                POIList.localPosition = Vector3.zero;
@@ -69,11 +76,11 @@ public class POIButtonManager : MonoBehaviour {
                 XmlIO.Save(handler, path);
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-    
+	}// start
+
+	void POIClicked(GameObject clicked)
+	{
+		clicked.GetComponent<Button>().image.color = Color.red;
 	}
 
 
