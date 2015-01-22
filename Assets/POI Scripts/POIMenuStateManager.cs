@@ -7,7 +7,9 @@ public class POIMenuStateManager : MonoBehaviour {
 
 	public static bool EditModeState{
 		get{
+
 			return editModeState; //default of bool is faulse, no need to initialize
+
 		}
 		set{
 			editModeState = value;
