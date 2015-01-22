@@ -60,49 +60,28 @@ public class POIButtonManager : MonoBehaviour {
 									// We use PointerClick so we know when the used has clicked on a button.
 									EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
 									eTrigger.delegates.Add(entry);
-<<<<<<< HEAD
+
                                }
                                POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
                                POIList.localPosition = Vector3.zero;
                            }
                        });
-                // make a copy of the original poi information
-                // all of the modifications will be done with handler, leaving restoreHandler unchanged
-                restoreHandler = handler;
             }
             else
             {
                 foreach (Transform child in POIList.transform)
                 {
-					handler.AddPoint(child.GetComponent<POIInfo>().Point);
+					POI pointToAdd = child.GetComponent<POIInfo>().Point;
+					originalHandler.AddPoint(pointToAdd);
                 }
 
-                XmlIO.Save(handler, POI_GlobalVariables.XMLpath);
+                XmlIO.Save(originalHandler, POI_GlobalVariables.XMLpath);
             }
-        }
-	}// start
-
-=======
-	                       }
-	                       POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-	                       POIList.localPosition = Vector3.zero;
-	                   }
-	               });
-	    }
-	    else
-	    {
-	        foreach (Transform child in POIList.transform)
-	        {
-				POI pointToAdd = child.GetComponent<POIInfo>().Point;
-	            originalHandler.AddPoint(pointToAdd);
-	        }
->>>>>>> FETCH_HEAD
-
-	        XmlIO.Save(originalHandler, POI_GlobalVariables.XMLpath);
-	    }
-
 		// make a copy of the original poi information
 		// all of the modifications will be done with handler, leaving originalHandler unchanged
 		editHandler = originalHandler;
+        
 	}// start
+
+
 }
