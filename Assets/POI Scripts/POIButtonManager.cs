@@ -90,8 +90,9 @@ public class POIButtonManager : MonoBehaviour {
 			foreach (Transform child in POIList.transform)
 			{
 				Destroy(child.gameObject);
+				NumOfButtons--;
 			}
-			NumOfButtons = 0;
+
 
 			//load the POIHandler.xml, the saved button files
 			originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;

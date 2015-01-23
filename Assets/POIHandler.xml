@@ -58,6 +58,146 @@
           <z>0</z>
         </Rotation>
       </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
+      <POI>
+        <SceneFlag>Start</SceneFlag>
+        <Name>New Button</Name>
+        <Position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Position>
+        <Rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </Rotation>
+      </POI>
     </ScenePOIs>
   </ProjectPOIs>
 </POIHandler>
