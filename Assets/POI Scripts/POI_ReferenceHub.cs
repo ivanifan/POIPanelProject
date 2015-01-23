@@ -4,11 +4,11 @@ using System;
 
 public class POI_ReferenceHub{
 
-	public  static RectTransform POIMenu;
-	public  static RectTransform POIEditWindow;
-	public  static RectTransform ApplyBut;
-	public  static RectTransform CancelBut;
-	public  static RectTransform EditBut;
+	public  static RectTransform POIMenu = new RectTransform();
+	public  static RectTransform POIEditWindow = new RectTransform();
+	public  static RectTransform ApplyBut = new RectTransform();
+	public  static RectTransform CancelBut = new RectTransform();
+	public  static RectTransform EditBut = new RectTransform();
 
 	static POI_ReferenceHub(){
 		try{

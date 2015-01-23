@@ -84,6 +84,24 @@ public class POIHandler
 		}
 	}
 
+	public void UpdatePoint(POI oldPoint, POI newPoint)
+	{
+		foreach(List<POI> sceneList in projectPOIs)
+		{
+			if(sceneList[0].sceneFlag == oldPoint.sceneFlag)
+			{
+				for(int i = 0; i < sceneList.Count;i++)
+				{
+					if(oldPoint == sceneList[i])
+					{
+						sceneList[i] = newPoint;
+						break;
+					}
+				}
+			}
+		}
+	}
+
     public POIHandler()
     {
         projectPOIs = new List<List<POI>>();
