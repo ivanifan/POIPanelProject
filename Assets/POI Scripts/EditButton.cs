@@ -28,7 +28,6 @@ public class EditButton : MonoBehaviour {
 		Time.timeScale = 0;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale; // fixed update is 50fps, which is 0.02s when time scale is 1
 
-
 		//hide the edit button
 		gameObject.SetActive(false);
 	}

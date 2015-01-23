@@ -7,9 +7,9 @@ using System.Linq;
 using UnityEngine.EventSystems;
 
 public class POIButtonManager : MonoBehaviour {
-	
-    public static POIHandler editHandler = new POIHandler();
 
+	public static POIButtonManager instance{get; set;}
+    public static POIHandler editHandler = new POIHandler();
     // variable to hold the initial button and poi data when the application starts
     // will have an option in the poi menu to restore the original values
     public static POIHandler originalHandler = new POIHandler();
@@ -21,38 +21,20 @@ public class POIButtonManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		if(POIButtonManager.instance ==null){
+			POIButtonManager.instance = this;
+		}else{
+			Debug.LogError("More than one instance of POIButtonManager!");
+		}
+
 		Debug.Log(POI_GlobalVariables.XMLpath);
 	    if (File.Exists(POI_GlobalVariables.XMLpath))
 	    {
-	        foreach (Transform child in POIList.transform)
-	        {
-	            Destroy(child.gameObject);
-	        }
-	        originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
-	        
-				originalHandler.projectPOIs.Where(scenePOILists => scenePOILists.Count > 0)
-	               .ToList()
-	               .ForEach(sceneList => {
-	                   if(sceneList[0].sceneFlag == Application.loadedLevelName)
-	                   {
-	                       foreach (POI point in sceneList)
-	                       {
-								CreateNewButton(point);
-                       	   }
-                           POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-                           POIList.localPosition = Vector3.zero;
-                   		}
-               	});
+			LoadAndGenerateButs();
             }
             else
             {
-                foreach (Transform child in POIList.transform)
-                {
-					POI pointToAdd = child.GetComponent<POIInfo>().Point;
-					originalHandler.AddPoint(pointToAdd);
-                }
-
-                XmlIO.Save(originalHandler, POI_GlobalVariables.XMLpath);
+			SaveButsToXML();
             }
 		// make a copy of the original poi information
 		// all of the modifications will be done with handler, leaving originalHandler unchanged
@@ -101,4 +83,46 @@ public class POIButtonManager : MonoBehaviour {
 		NumOfButtons--;
 	}
 
+	public void LoadAndGenerateButs(){
+		if (File.Exists(POI_GlobalVariables.XMLpath))
+		{
+			//clear current buttons in the menu
+			foreach (Transform child in POIList.transform)
+			{
+				Destroy(child.gameObject);
+			}
+			NumOfButtons = 0;
+
+			//load the POIHandler.xml, the saved button files
+			originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
+			//generate new buttons
+			originalHandler.projectPOIs.Where(scenePOILists => scenePOILists.Count > 0)
+				.ToList()
+					.ForEach(sceneList => {
+						if(sceneList[0].sceneFlag == Application.loadedLevelName)
+						{
+							foreach (POI point in sceneList)
+							{
+								CreateNewButton(point);
+							}
+							POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+							POIList.localPosition = Vector3.zero;
+						}
+					});
+		}
+		else{
+			Debug.Log("saved buttons not found! need to generate saved button files based on current project.");
+		}
+	}
+
+	public void SaveButsToXML(){
+		Debug.Log("generating saved button files based on current project");
+		foreach (Transform child in POIList.transform)
+		{
+			POI pointToAdd = child.GetComponent<POIInfo>().Point;
+			originalHandler.AddPoint(pointToAdd);
+		}
+		
+		XmlIO.Save(originalHandler, POI_GlobalVariables.XMLpath);
+	}
 }
