@@ -28,14 +28,27 @@ public class POIButtonManager : MonoBehaviour {
 		}
 
 		Debug.Log(POI_GlobalVariables.XMLpath);
-	    if (File.Exists(POI_GlobalVariables.XMLpath))
-	    {
-			LoadAndGenerateButs();
-            }
-            else
-            {
-			SaveButsToXML();
-            }
+
+		if(Application.isEditor){
+			if (File.Exists(POI_GlobalVariables.XMLpath))
+			{
+
+			}
+			else
+			{
+				SaveButsToXML();
+			}
+		}
+		else{
+		    if (File.Exists(POI_GlobalVariables.XMLpath))
+		    {
+				LoadAndGenerateButs();
+	        }
+			else
+			{
+				SaveButsToXML();
+			}
+		}
 		// make a copy of the original poi information
 		// all of the modifications will be done with handler, leaving originalHandler unchanged
 		editHandler = originalHandler;
@@ -126,4 +139,20 @@ public class POIButtonManager : MonoBehaviour {
 		
 		XmlIO.Save(originalHandler, POI_GlobalVariables.XMLpath);
 	}
+
+	//find all buttons in POIList and return them in a List
+	private List<POI> grabButtonsFromEditor(){
+
+		List<POI> butsInEditor = new List<POI>();
+		foreach(RectTransform but in POIList){ 
+			butsInEditor.Add(but.GetComponent<POIInfo>().Point);
+		}
+		return butsInEditor;
+	}
+
+	//merge the buttons in editor with the existing XML file
+	private void mergeEditorButsIntoXML(List<POI> butsInEditor){
+
+	}
+
 }
