@@ -15,7 +15,7 @@ public class POIButtonManager : MonoBehaviour {
     public static POIHandler originalHandler = new POIHandler();
     public RectTransform POIList;
     public Object buttonPrefab;
-    public int NumOfButtons = 0;
+    public int NumOfButtons = 0;    //
     public float POIlistHeight = 7.0f;
 
 	// Use this for initialization
@@ -27,12 +27,13 @@ public class POIButtonManager : MonoBehaviour {
 			Debug.LogError("More than one instance of POIButtonManager!");
 		}
 
-		Debug.Log(POI_GlobalVariables.XMLpath);
+		Debug.Log("loading POIs from: " + POI_GlobalVariables.XMLpath);
 
 		if(Application.isEditor){
 			if (File.Exists(POI_GlobalVariables.XMLpath))
 			{
-
+				mergeEditorButsIntoXML(grabButtonsFromEditor(), POI_GlobalVariables.XMLpath);
+				GenerateButs(originalHandler);
 			}
 			else
 			{
@@ -49,11 +50,79 @@ public class POIButtonManager : MonoBehaviour {
 				SaveButsToXML();
 			}
 		}
+
 		// make a copy of the original poi information
 		// all of the modifications will be done with handler, leaving originalHandler unchanged
 		editHandler = originalHandler;
         
 	}// start
+
+	//load the xml from specified path into the handler
+	public void loadButsFromXML(string XMLpath, ref POIHandler handler){
+		if (File.Exists(XMLpath))
+		{
+			//load the POIHandler.xml, the saved button files
+			handler = XmlIO.Load(XMLpath, typeof(POIHandler)) as POIHandler;
+		}
+		else
+		{
+			Debug.Log("saved buttons not found! need to generate saved button files based on current project.");
+		}
+	}
+
+	public void GenerateButs(POIHandler handler){
+		//clear current buttons in the menu
+		foreach (Transform child in POIList.transform)
+		{
+			Destroy(child.gameObject);
+		}
+		NumOfButtons = 0;
+
+		//generate new buttons
+		foreach(POI point in handler.projectPOIs){
+			foreach(string sFlag in point.sceneFlag){
+				if(sFlag == Application.loadedLevelName)
+				{
+					CreateNewButton(point);
+					POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+					POIList.localPosition = Vector3.zero;
+				}
+			}
+		}
+
+	}
+
+	//this is the combination of function loadButsFromXML and GenerateButs
+	public void LoadAndGenerateButs(){
+		if (File.Exists(POI_GlobalVariables.XMLpath))
+		{
+			//clear current buttons in the menu
+			foreach (Transform child in POIList.transform)
+			{
+				Destroy(child.gameObject);
+			}
+			NumOfButtons = 0;
+			
+			//load the POIHandler.xml, the saved button files
+			originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
+
+			//generate new buttons
+			foreach(POI point in originalHandler.projectPOIs){
+						foreach(string sFlag in point.sceneFlag){
+							if(sFlag == Application.loadedLevelName)
+							{
+								CreateNewButton(point);
+								POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+								POIList.localPosition = Vector3.zero;
+							}
+						}
+			}
+		}
+		else{
+			Debug.Log("saved buttons not found! need to generate saved button files based on current project.");
+		}
+	}
+
 
 	public void CreateNewButton(POI point)
 	{
@@ -82,6 +151,7 @@ public class POIButtonManager : MonoBehaviour {
 		eTrigger.delegates.Add(entry);
 	}
 
+	//comments here
 	public void RemoveButton(GameObject buttonToRemove)
 	{
 		float yThreshhold = buttonToRemove.transform.position.y;
@@ -96,38 +166,6 @@ public class POIButtonManager : MonoBehaviour {
 		NumOfButtons--;
 	}
 
-	public void LoadAndGenerateButs(){
-		if (File.Exists(POI_GlobalVariables.XMLpath))
-		{
-			//clear current buttons in the menu
-			foreach (Transform child in POIList.transform)
-			{
-				Destroy(child.gameObject);
-				NumOfButtons--;
-			}
-
-
-			//load the POIHandler.xml, the saved button files
-			originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
-			//generate new buttons
-			originalHandler.projectPOIs.Where(scenePOILists => scenePOILists.Count > 0)
-				.ToList()
-					.ForEach(sceneList => {
-						if(sceneList[0].sceneFlag == Application.loadedLevelName)
-						{
-							foreach (POI point in sceneList)
-							{
-								CreateNewButton(point);
-							}
-							POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-							POIList.localPosition = Vector3.zero;
-						}
-					});
-		}
-		else{
-			Debug.Log("saved buttons not found! need to generate saved button files based on current project.");
-		}
-	}
 
 	public void SaveButsToXML(){
 		Debug.Log("generating saved button files based on current project");
@@ -151,8 +189,41 @@ public class POIButtonManager : MonoBehaviour {
 	}
 
 	//merge the buttons in editor with the existing XML file
-	private void mergeEditorButsIntoXML(List<POI> butsInEditor){
+	private void mergeEditorButsIntoXML(List<POI> butsInEditor, string XMLpath){
+		loadButsFromXML(XMLpath,ref originalHandler);
+		for(int i =0; i < butsInEditor.Count; i++){
+			bool match = false;
+			foreach(POI point in originalHandler.projectPOIs){
+				if(IsPointSame(point,butsInEditor[i])){
+					match = true;
+					break;
+				}
+			}
+			if(!match){
+				originalHandler.AddPoint (butsInEditor[i]);
+			}
+		}
+	}
 
+	//return true if two points are the same
+	private bool IsPointSame(POI pointA, POI pointB){
+		if(pointA.buttonName != pointB.buttonName){
+			return false;
+		}
+
+		if(!pointA.sceneFlag.SequenceEqual(pointB.sceneFlag)){
+			return false;
+		}
+
+		if(pointA.position != pointB.position){
+			return false;
+		}
+
+		if(pointA.rotation != pointB.rotation){
+			return false;
+		}
+
+		return true;
 	}
 
 }

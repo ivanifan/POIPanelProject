@@ -14,18 +14,18 @@ public class POI_ReferenceHub{
 		try{
 
 			POIMenu = GameObject.Find("POIMenu").GetComponent<RectTransform>();
-			Debug.Log("POIEditWindow: " + POIEditWindow);
+
 			POIEditWindow = GameObject.Find("POIEditWindow").GetComponent<RectTransform>();
-			Debug.Log("POIEditWindow: " + POIEditWindow);
+
 			ApplyBut = POIMenu.FindChild("Apply").GetComponent<RectTransform>();
 			CancelBut = POIMenu.FindChild("Cancel").GetComponent<RectTransform>();
 			EditBut = POIMenu.FindChild("EditButton").GetComponent<RectTransform>();
 		}
 		catch(UnityException ex){  //try to catch the situation when GameObject.Find returns null
-			Debug.Log(ex.Message);
+			Debug.LogError(ex.Message);
 		}
 		catch(Exception ex){
-			Debug.Log(ex.Message);
+			Debug.LogError(ex.Message);
 		}
 	}
 }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class POIInfo : MonoBehaviour {
     
-    public string sceneName;
+    public List<string> sceneName;
     public string buttonName;
     public Vector3 position;
     public Vector3 rotation;

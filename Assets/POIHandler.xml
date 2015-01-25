@@ -1,203 +1,85 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <POIHandler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectPOIs>
-    <ScenePOIs>
-      <POI>
+    <POI>
+      <SceneFlagList>
         <SceneFlag>Start</SceneFlag>
-        <Name>button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
+      </SceneFlagList>
+      <Name>New Button</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
         <SceneFlag>Start</SceneFlag>
-        <Name>One</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
+      </SceneFlagList>
+      <Name>New Button</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
         <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
+      </SceneFlagList>
+      <Name>New Button</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
         <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
+      </SceneFlagList>
+      <Name>New Button</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
         <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-      <POI>
-        <SceneFlag>Start</SceneFlag>
-        <Name>New Button</Name>
-        <Position>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Position>
-        <Rotation>
-          <x>0</x>
-          <y>0</y>
-          <z>0</z>
-        </Rotation>
-      </POI>
-    </ScenePOIs>
+      </SceneFlagList>
+      <Name>Test But</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
   </ProjectPOIs>
 </POIHandler>

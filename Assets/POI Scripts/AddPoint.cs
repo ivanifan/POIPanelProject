@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class AddPoint : MonoBehaviour {
 	
@@ -9,12 +9,9 @@ public class AddPoint : MonoBehaviour {
 
 	public void AddNewPoint()
 	{
-
-		POI pointToAdd = new POI();
-		pointToAdd.sceneFlag = Application.loadedLevelName;
-		pointToAdd.buttonName = defaultName;
-		pointToAdd.position = defaultPosition;
-		pointToAdd.rotation = new Vector3(0,defaultRotation,0);
+		List<string> sceneFlag = new List<string>();
+		sceneFlag.Add(Application.loadedLevelName);
+		POI pointToAdd = new POI(sceneFlag, defaultName, defaultPosition,new Vector3(0, defaultRotation, 0));
 		POIButtonManager.originalHandler.AddPoint(pointToAdd);
 		POI_ReferenceHub.POIMenu.GetComponent<POIButtonManager>().CreateNewButton(pointToAdd);
 	}

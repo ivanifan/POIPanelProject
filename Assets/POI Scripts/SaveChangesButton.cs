@@ -28,7 +28,7 @@ public class SaveChangesButton : MonoBehaviour {
 		activeButton = POI_ReferenceHub.POIMenu.GetComponent<POIActiveButtonManager> ().activeButton;
 		POI newPoint = new POI ();
 
-		newPoint.sceneFlag = Application.loadedLevelName;
+		newPoint.sceneFlag.Add (Application.loadedLevelName);
 		newPoint.buttonName = poiInfoFields [4].value;
 		newPoint.position = new Vector3(float.Parse (poiInfoFields[0].value),float.Parse(poiInfoFields[1].value),float.Parse(poiInfoFields[2].value));
 		newPoint.rotation = new Vector3(0,float.Parse(poiInfoFields[3].value),0);
