@@ -9,6 +9,16 @@ public class POIMenuStateManager : MonoBehaviour {
 
 	private static bool editModeState = false;
 
+	private bool finshedSetupForModeChange = false;
+
+	public delegate void stateChangeDelegate();
+
+	public static event stateChangeDelegate MenuStateChange;
+
+	void Start(){
+		MenuStateChange += reset;
+	}
+
 	public static bool EditModeState{
 		get{
 
@@ -16,21 +26,37 @@ public class POIMenuStateManager : MonoBehaviour {
 
 		}
 		set{
+			if(editModeState != value){
+				MenuStateChange();
+			}
+
 			editModeState = value;
 		}
 	}
 
 	void Update ()
 	{
-		if (!editModeState)
-			Time.timeScale = 1;
-		else
-			Time.timeScale = 0;
+		if(!finshedSetupForModeChange){
+			if (!editModeState){
+				Time.timeScale = 1;
+			}
+			else{
+				Time.timeScale = 0;
+			}
 
+			Time.fixedDeltaTime = 0.02f * Time.timeScale; // fixed update is 50fps, which is 0.02s when time scale is 1
 
-		foreach(MonoBehaviour mono in disableWhileMenuOpen)
-		{
-			mono.enabled = !editModeState;
+			//switch off 
+			foreach(MonoBehaviour mono in disableWhileMenuOpen)
+			{
+				mono.enabled = !editModeState;
+			}
+
+			finshedSetupForModeChange = true;
 		}
+	}
+
+	private void reset(){
+		finshedSetupForModeChange = false;
 	}
 }
