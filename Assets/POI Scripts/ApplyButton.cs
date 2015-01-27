@@ -9,6 +9,7 @@ public class ApplyButton : MonoBehaviour {
 		XmlIO.Save(POIButtonManager.editHandler, POI_GlobalVariables.XMLpath);
 		POIButtonManager.originalHandler = POIButtonManager.editHandler;
 
+		POIMenuStateManager.EditModeState = false;
 
 		//restoring the original window
 		POI_ReferenceHub.POIMenu.gameObject.GetComponent<Image>().color = Color.white;
