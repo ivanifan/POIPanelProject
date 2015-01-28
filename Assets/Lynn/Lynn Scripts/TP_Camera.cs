@@ -225,14 +225,6 @@ public class TP_Camera : MonoBehaviour {
 		//return the desired position
 		return TargetLookAt.position +rotation * direction; // vector multiplied by a quaternion returns a vector, which is the new location after applying the rotation
 	}
-
-	
-
-	
-
-
-
-
 	
 	void UpdatePosition(){
 		var posX = Mathf.SmoothDamp(position.x, desiredPosition.x, ref velX, X_Smooth);
@@ -256,6 +248,7 @@ public class TP_Camera : MonoBehaviour {
 	// shoot a ray from camera to cameraDistanceCheck(a child of the Character.). adjust the visibility of the cameraDistanceCheck based
 	// on the distance from camera to the character.
 	public void checkCameraCharacterDistance(Vector3 from, Vector3 to){
+		/*
 		//PRE: from is the transform.position of the camera
 		//		to is the transfoorm.position of the cameraDistanceCheck
 		//POST: change the transparency and visibility of the cameraDistanceCheck and its children
@@ -272,7 +265,19 @@ public class TP_Camera : MonoBehaviour {
 			}
 		}
 		//	Debug.Log(hitInfo.collider.tag);
-		
+*/
+		Vector3 lynnCameraVector = transform.parent.FindChild("targetLookAt").position - desiredPosition;
+		Debug.Log("desired position " + desiredPosition);
+		Debug.Log("lynn camera vector" + lynnCameraVector);
+		if(lynnCameraVector.magnitude < 0.8f)
+		{
+			cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = false;
+		}
+		else
+		{
+			cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = true;
+		}
+
 	}	
 
 

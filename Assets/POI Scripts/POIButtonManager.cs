@@ -147,7 +147,7 @@ public class POIButtonManager : MonoBehaviour {
 		// The entry consists of two parts, the listener we set up earlier, and the EventTriggerType.
 		// The EventTriggerType tells the EventTrigger when to send out the message that the event has occured.
 		// We use PointerClick so we know when the used has clicked on a button.
-		EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick}; 
+		EventTrigger.Entry entry = new EventTrigger.Entry(){callback = trigger, eventID = EventTriggerType.PointerClick};
 		eTrigger.delegates.Add(entry);
 	}
 
