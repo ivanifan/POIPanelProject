@@ -128,7 +128,7 @@ public class POIButtonManager : MonoBehaviour {
 	{
 		GameObject newButton = Instantiate(buttonPrefab) as GameObject;
 		RectTransform buttonRectTransform = newButton.transform as RectTransform;
-		buttonRectTransform.parent = POIList;
+		buttonRectTransform.SetParent(POIList);
 		buttonRectTransform.localPosition = new Vector3(7.0f, -7.0f + NumOfButtons * (-buttonRectTransform.rect.height - 7.0f), 0.0f);
 		
 		newButton.GetComponent<POIInfo>().Point = point;

@@ -36,11 +36,11 @@ public class POIActiveButtonManager : MonoBehaviour {
 			// Here we get the POI from the POIInfo script that is attached to the activeButton.
 			// We then use this info to populate the edit menu fields.
 			POI clickedPOI = activeButton.GetComponent<POIInfo>().Point;
-			xPosField.value = clickedPOI.position.x.ToString();
-			yPosField.value = clickedPOI.position.y.ToString();
-			zPosField.value = clickedPOI.position.z.ToString();
-			yRotField.value = clickedPOI.rotation.y.ToString();
-			nameField.value = clickedPOI.buttonName;
+			xPosField.text = clickedPOI.position.x.ToString();
+			yPosField.text = clickedPOI.position.y.ToString();
+			zPosField.text = clickedPOI.position.z.ToString();
+			yRotField.text = clickedPOI.rotation.y.ToString();
+			nameField.text = clickedPOI.buttonName;
 		}
 		else
 		{
