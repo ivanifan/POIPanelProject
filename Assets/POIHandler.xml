@@ -81,5 +81,69 @@
         <z>0</z>
       </Rotation>
     </POI>
+    <POI>
+      <SceneFlagList>
+        <SceneFlag>Start</SceneFlag>
+      </SceneFlagList>
+      <Name>name</Name>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
+        <SceneFlag>Start</SceneFlag>
+      </SceneFlagList>
+      <Name />
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
+        <SceneFlag>Start</SceneFlag>
+      </SceneFlagList>
+      <Name />
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
+    <POI>
+      <SceneFlagList>
+        <SceneFlag>Start</SceneFlag>
+      </SceneFlagList>
+      <Name />
+      <Position>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+    </POI>
   </ProjectPOIs>
 </POIHandler>

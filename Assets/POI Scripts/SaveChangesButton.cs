@@ -15,12 +15,12 @@ public class SaveChangesButton : MonoBehaviour {
 		POI newPoint = new POI ();
 
 		newPoint.sceneFlag.Add (Application.loadedLevelName);
-		newPoint.buttonName = POI_ReferenceHub.poiInfoFields [4].text;
-		newPoint.position = new Vector3(float.Parse (POI_ReferenceHub.poiInfoFields[0].text),float.Parse(POI_ReferenceHub.poiInfoFields[1].text),float.Parse(POI_ReferenceHub.poiInfoFields[2].text));
-		newPoint.rotation = new Vector3(0,float.Parse(POI_ReferenceHub.poiInfoFields[3].text),0);
+		newPoint.buttonName = POI_ReferenceHub.poiInfoFields [4].value;
+		newPoint.position = new Vector3(float.Parse (POI_ReferenceHub.poiInfoFields[0].value),float.Parse(POI_ReferenceHub.poiInfoFields[1].value),float.Parse(POI_ReferenceHub.poiInfoFields[2].value));
+		newPoint.rotation = new Vector3(0,float.Parse(POI_ReferenceHub.poiInfoFields[3].value),0);
 
 		POIButtonManager.editHandler.UpdatePoint (activeButton.GetComponent<POIInfo> ().Point, newPoint);
-		activeButton.GetComponent<POIInfo> ().Point = newPoint;
+		//activeButton.GetComponent<POIInfo> ().Point = newPoint;
 		activeButton.GetComponentInChildren<Text> ().text = newPoint.buttonName;
 
 	}

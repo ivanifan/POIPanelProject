@@ -9,10 +9,10 @@ public class CancelChangesButton : MonoBehaviour {
 	{
 		GameObject activeButton = POI_ReferenceHub.POIMenu.GetComponent<POIActiveButtonManager> ().activeButton;
 		POI activePoint = activeButton.GetComponent<POIInfo> ().Point;
-		POI_ReferenceHub.poiInfoFields[0].text = activePoint.position.x.ToString();
-		POI_ReferenceHub.poiInfoFields[1].text = activePoint.position.y.ToString();
-		POI_ReferenceHub.poiInfoFields[2].text = activePoint.position.z.ToString();
-		POI_ReferenceHub.poiInfoFields[3].text = activePoint.rotation.y.ToString();
-		POI_ReferenceHub.poiInfoFields[4].text = activePoint.buttonName;
+		POI_ReferenceHub.poiInfoFields[0].value = activePoint.position.x.ToString();
+		POI_ReferenceHub.poiInfoFields[1].value = activePoint.position.y.ToString();
+		POI_ReferenceHub.poiInfoFields[2].value = activePoint.position.z.ToString();
+		POI_ReferenceHub.poiInfoFields[3].value = activePoint.rotation.y.ToString();
+		POI_ReferenceHub.poiInfoFields[4].value = activePoint.buttonName;
 	}
 }

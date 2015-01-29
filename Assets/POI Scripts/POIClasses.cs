@@ -61,6 +61,7 @@ public class POIHandler
 		{
 			if(projectPOIs[i] == oldPoint){
 				projectPOIs[i] = newPoint;
+				oldPoint = newPoint;
 			}
 		}
 	}
