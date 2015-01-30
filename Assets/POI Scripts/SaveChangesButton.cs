@@ -19,8 +19,9 @@ public class SaveChangesButton : MonoBehaviour {
 		newPoint.position = new Vector3(float.Parse (POI_ReferenceHub.poiInfoFields[0].value),float.Parse(POI_ReferenceHub.poiInfoFields[1].value),float.Parse(POI_ReferenceHub.poiInfoFields[2].value));
 		newPoint.rotation = new Vector3(0,float.Parse(POI_ReferenceHub.poiInfoFields[3].value),0);
 
+		//the UpdatePoint() also change the point in POIinfo pointing to the newPoint instance
 		POIButtonManager.editHandler.UpdatePoint (activeButton.GetComponent<POIInfo> ().Point, newPoint);
-		//activeButton.GetComponent<POIInfo> ().Point = newPoint;
+
 		activeButton.GetComponentInChildren<Text> ().text = newPoint.buttonName;
 
 	}
