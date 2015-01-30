@@ -11,6 +11,8 @@ public class POIInfo : MonoBehaviour {
 
 	private POI point = new POI();
 
+
+//Point's setter and getter returns the POI by references, be aware of the implication of this when developing
     public POI Point{
      get{
 

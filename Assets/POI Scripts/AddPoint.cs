@@ -7,6 +7,7 @@ public class AddPoint : MonoBehaviour {
 	public Vector3 defaultPosition;
 	public float defaultRotation;
 
+	//called by the event of Add Point button
 	public void AddNewPoint()
 	{
 		List<string> sceneFlag = new List<string>();

@@ -151,7 +151,8 @@ public class POIButtonManager : MonoBehaviour {
 		eTrigger.delegates.Add(entry);
 	}
 
-	//comments here
+	//remove specified button by reference
+	//and shift remaining buttons to reflect changes.
 	public void RemoveButton(GameObject buttonToRemove)
 	{
 		float yThreshhold = buttonToRemove.transform.position.y;
@@ -166,7 +167,7 @@ public class POIButtonManager : MonoBehaviour {
 		NumOfButtons--;
 	}
 
-
+	//save the buttons in the scene into the XML file and the orginalHandler
 	public void SaveButsToXML(){
 		Debug.Log("generating saved button files based on current project");
 		foreach (Transform child in POIList.transform)
@@ -205,6 +206,7 @@ public class POIButtonManager : MonoBehaviour {
 		}
 	}
 
+	//compare two POI classes by value
 	//return true if two points are the same
 	private bool IsPointSame(POI pointA, POI pointB){
 		if(pointA.buttonName != pointB.buttonName){
