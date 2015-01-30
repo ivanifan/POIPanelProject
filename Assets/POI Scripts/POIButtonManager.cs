@@ -29,6 +29,9 @@ public class POIButtonManager : MonoBehaviour {
 
 		Debug.Log("loading POIs from: " + POI_GlobalVariables.XMLpath);
 
+		// if we are running in the editor, and we find a poi xml file, we want to merge that file with the poi's that were created in the editor
+		// we then generate buttons for all of the pois that were in either the xml file or in the editor
+		// if we don't find an xml file, we save off the buttons that were in the editor/built into the project
 		if(Application.isEditor){
 			if (File.Exists(POI_GlobalVariables.XMLpath))
 			{
@@ -52,7 +55,8 @@ public class POIButtonManager : MonoBehaviour {
 		}
 
 		// make a copy of the original poi information
-		// all of the modifications will be done with handler, leaving originalHandler unchanged
+		// all of the modifications will be done with editHandler, leaving originalHandler unchanged
+		// !!!! this may be changed if we move to only using one handler object
 		editHandler = originalHandler;
         
 	}// start
@@ -123,16 +127,28 @@ public class POIButtonManager : MonoBehaviour {
 		}
 	}
 
-
+	// This function is used to generate a new button in the menu, based on the POI that is passed into the function.
 	public void CreateNewButton(POI point)
 	{
+		// here we instantiate the newButton from a prefab
+		// we also get a reference to its RectTransform and set its parent to the POIList
 		GameObject newButton = Instantiate(buttonPrefab) as GameObject;
 		RectTransform buttonRectTransform = newButton.transform as RectTransform;
 		buttonRectTransform.SetParent(POIList);
+
+		// the following line positions the button correctly as a child of the POIList
+		// !!!! when we convert to using the Layout system, this will be automatically done
 		buttonRectTransform.localPosition = new Vector3(7.0f, -7.0f + NumOfButtons * (-buttonRectTransform.rect.height - 7.0f), 0.0f);
-		
+
+		// here we set the POIInfo.Point on the button to the point that was passed into the function.
+		// this assignment is by reference
 		newButton.GetComponent<POIInfo>().Point = point;
+
+		// update the text of the button to match the name of the POI 
 		newButton.transform.GetComponentInChildren<Text>().text = point.buttonName;
+
+		// the next two lines update our counter for the number of buttons that are currently in the scene, and resize the POIList
+		// !!!! these lines may not be necessary when switching to the Layout system
 		NumOfButtons++;
 		POIlistHeight += buttonRectTransform.rect.height + 7.0f;
 		
@@ -154,6 +170,8 @@ public class POIButtonManager : MonoBehaviour {
 	//comments here
 	public void RemoveButton(GameObject buttonToRemove)
 	{
+		// this section of code is to reposition the buttons below the one being deleted so that there are no gaps in the list
+		// !!!! when we switch to using the Layout system, this will be unnecessary
 		float yThreshhold = buttonToRemove.transform.position.y;
 		for(int i = 0; i < NumOfButtons; i++)
 		{
@@ -162,7 +180,12 @@ public class POIButtonManager : MonoBehaviour {
 				buttonToRemove.transform.parent.GetChild(i).position += new Vector3(0,37,0);
 			}
 		}
+
+		// The destroy call is what actually removes the button
 		GameObject.Destroy(buttonToRemove);
+
+		// numofbuttons is used for positioning and sizing the list and buttons
+		// !!!! it will be unnecessary in the Layout system
 		NumOfButtons--;
 	}
 
