@@ -14,18 +14,23 @@ public class POIButtonManager : MonoBehaviour {
     // will have an option in the poi menu to restore the original values
     public static POIHandler originalHandler = new POIHandler();
     public RectTransform POIList;
-    public Object buttonPrefab;
+    public GameObject buttonPrefab;
+	public GameObject marker;
     public int NumOfButtons = 0;    //
     public float POIlistHeight = 7.0f;
+	public GameObject markerRoot; //empty obj, root of all markers. only one instance
 
 	// Use this for initialization
 	void Start () {
-	
+
 		if(POIButtonManager.instance ==null){
 			POIButtonManager.instance = this;
 		}else{
 			Debug.LogError("More than one instance of POIButtonManager!");
 		}
+
+		//instantiate a markerRoot obj in the scene
+		markerRoot = new GameObject("markerRoot");
 
 		Debug.Log("loading POIs from: " + POI_GlobalVariables.XMLpath);
 
@@ -36,7 +41,7 @@ public class POIButtonManager : MonoBehaviour {
 			if (File.Exists(POI_GlobalVariables.XMLpath))
 			{
 				mergeEditorButsIntoXML(grabButtonsFromEditor(), POI_GlobalVariables.XMLpath);
-				GenerateButs(originalHandler);
+				GenerateButsMarkers(originalHandler);
 			}
 			else
 			{
@@ -74,29 +79,7 @@ public class POIButtonManager : MonoBehaviour {
 		}
 	}
 
-	public void GenerateButs(POIHandler handler){
-		//clear current buttons in the menu
-		foreach (Transform child in POIList.transform)
-		{
-			Destroy(child.gameObject);
-		}
-		NumOfButtons = 0;
-
-		//generate new buttons
-		foreach(POI point in handler.projectPOIs){
-			foreach(string sFlag in point.sceneFlag){
-				if(sFlag == Application.loadedLevelName)
-				{
-					CreateNewButton(point);
-					POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-					POIList.localPosition = Vector3.zero;
-				}
-			}
-		}
-
-	}
-
-	//this is the combination of function loadButsFromXML and GenerateButs
+	//this is the combination of function loadButsFromXML and GenerateButsMarkers
 	public void LoadAndGenerateButs(){
 		if (File.Exists(POI_GlobalVariables.XMLpath))
 		{
@@ -109,17 +92,19 @@ public class POIButtonManager : MonoBehaviour {
 			
 			//load the POIHandler.xml, the saved button files
 			originalHandler = XmlIO.Load(POI_GlobalVariables.XMLpath, typeof(POIHandler)) as POIHandler;
-
+			
 			//generate new buttons
 			foreach(POI point in originalHandler.projectPOIs){
-						foreach(string sFlag in point.sceneFlag){
-							if(sFlag == Application.loadedLevelName)
-							{
-								CreateNewButton(point);
-								POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
-								POIList.localPosition = Vector3.zero;
-							}
-						}
+				foreach(string sFlag in point.sceneFlag){
+					if(sFlag == Application.loadedLevelName)
+					{
+						GameObject marker;
+						marker = generateMarkers(point);
+						CreateNewButton(point, marker);
+						POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+						POIList.localPosition = Vector3.zero;
+					}
+				}
 			}
 		}
 		else{
@@ -127,8 +112,49 @@ public class POIButtonManager : MonoBehaviour {
 		}
 	}
 
+	//delete all existing scene buttons N markers and generate from the xml file
+	public void GenerateButsMarkers(POIHandler handler){
+		//clear current buttons in the menu
+		foreach (Transform child in POIList.transform)
+		{
+			Destroy(child.gameObject);
+		}
+		NumOfButtons = 0;
+
+		//generate new buttons
+		foreach(POI point in handler.projectPOIs){
+			foreach(string sFlag in point.sceneFlag){
+				if(sFlag == Application.loadedLevelName)
+				{
+					GameObject marker;
+					marker = generateMarkers(point);
+					CreateNewButton(point, marker);
+					POIList.sizeDelta = new Vector2(POIList.sizeDelta.x , POIlistHeight);
+					POIList.localPosition = Vector3.zero;
+				}
+			}
+		}
+
+	}
+
+	//instantiate an instance of marker and return the marker object
+	private GameObject generateMarkers(POI point){
+		//load marker prefab by name
+		string path = "POIPanel/" + point.markerPrefab;
+		Object prefab = Resources.Load(path);
+		if(prefab == null){
+			Debug.LogError("marker of name " + point.markerPrefab + " not found!");
+		}
+
+		//configure marker transform and assign point to POIInfo on marker
+		GameObject marker = Instantiate(prefab, point.position, Quaternion.Euler(point.rotation)) as GameObject;
+		marker.transform.parent = markerRoot.transform;
+		marker.GetComponent<POIInfo>().Point = point;
+		return marker;
+	}
+
 	// This function is used to generate a new button in the menu, based on the POI that is passed into the function.
-	public void CreateNewButton(POI point)
+	public void CreateNewButton(POI point, GameObject marker)
 	{
 		// here we instantiate the newButton from a prefab
 		// we also get a reference to its RectTransform and set its parent to the POIList
@@ -140,9 +166,7 @@ public class POIButtonManager : MonoBehaviour {
 		// !!!! when we convert to using the Layout system, this will be automatically done
 		buttonRectTransform.localPosition = new Vector3(7.0f, -7.0f + NumOfButtons * (-buttonRectTransform.rect.height - 7.0f), 0.0f);
 
-		// here we set the POIInfo.Point on the button to the point that was passed into the function.
-		// this assignment is by reference
-		newButton.GetComponent<POIInfo>().Point = point;
+		newButton.GetComponent<POIInfoRef>().poiInfo = marker.GetComponent<POIInfo>() as POIInfo;
 
 		// update the text of the button to match the name of the POI 
 		newButton.transform.GetComponentInChildren<Text>().text = point.buttonName;
@@ -227,6 +251,7 @@ public class POIButtonManager : MonoBehaviour {
 				originalHandler.AddPoint (butsInEditor[i]);
 			}
 		}
+
 	}
 
 	//compare two POI classes by value

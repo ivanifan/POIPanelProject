@@ -21,18 +21,31 @@ public class POI
     [XmlElement("Rotation")]
     public Vector3 rotation;
 
+	[XmlElement("MarkerPrefabName")]
+	public string markerPrefab;
+
     public POI()
     {
     }
 
-    public POI(List<string> sFlag, string bName, Vector3 pos, Vector3 rot)
+    public POI(List<string> sFlag, string bName, Vector3 pos, Vector3 rot, string marker)
     {
         sceneFlag = sFlag;
         buttonName = bName;
         position = pos;
         rotation = rot;
+		markerPrefab = marker;
     }
+
+	public void Update(List<string> sFlag, string bName, Vector3 pos, Vector3 rot, string marker){
+		sceneFlag = sFlag;
+		buttonName = bName;
+		position = pos;
+		rotation = rot;
+		markerPrefab = marker;
+	}
 }
+
 [XmlRoot]
 public class POIHandler
 {

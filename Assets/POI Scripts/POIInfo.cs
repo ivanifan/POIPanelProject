@@ -8,11 +8,12 @@ public class POIInfo : MonoBehaviour {
     public string buttonName;
     public Vector3 position;
     public Vector3 rotation;
+	public string marker;
 
 	private POI point = new POI();
 
 
-//Point's setter and getter returns the POI by references, be aware of the implication of this when developing
+//returns the POI by references, be aware of the implication of this when developing
     public POI Point{
      get{
 
@@ -20,6 +21,7 @@ public class POIInfo : MonoBehaviour {
          point.buttonName = buttonName;
          point.position = position;
          point.rotation = rotation;
+			point.markerPrefab = marker;
          return point;
      }
 
@@ -30,6 +32,7 @@ public class POIInfo : MonoBehaviour {
             buttonName = point.buttonName;
             position = point.position;
             rotation = point.rotation;
+			marker = point.markerPrefab;
         }
     }
 

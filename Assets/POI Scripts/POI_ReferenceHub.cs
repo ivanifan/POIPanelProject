@@ -8,6 +8,7 @@ public class POI_ReferenceHub{
 
 	public  static RectTransform POIMenu = new RectTransform();
 	public  static RectTransform POIEditWindow = new RectTransform();
+	public static RectTransform AddDeleteWindow = new RectTransform();
 	public  static RectTransform ApplyBut = new RectTransform();
 	public  static RectTransform CancelBut = new RectTransform();
 	public  static RectTransform EditBut = new RectTransform();
@@ -17,8 +18,8 @@ public class POI_ReferenceHub{
 		try{
 
 			POIMenu = GameObject.Find("POIMenu").GetComponent<RectTransform>();
-
-			POIEditWindow = GameObject.Find("POIEditWindow").GetComponent<RectTransform>();
+			AddDeleteWindow = POIMenu.FindChild("AddDeleteWindow").GetComponent<RectTransform>();
+			POIEditWindow = POIMenu.FindChild("POIEditWindow").GetComponent<RectTransform>();
 
 			ApplyBut = POIMenu.FindChild("Apply").GetComponent<RectTransform>();
 			CancelBut = POIMenu.FindChild("Cancel").GetComponent<RectTransform>();
