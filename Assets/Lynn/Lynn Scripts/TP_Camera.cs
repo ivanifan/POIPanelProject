@@ -267,8 +267,8 @@ public class TP_Camera : MonoBehaviour {
 		//	Debug.Log(hitInfo.collider.tag);
 */
 		Vector3 lynnCameraVector = transform.parent.FindChild("targetLookAt").position - desiredPosition;
-		Debug.Log("desired position " + desiredPosition);
-		Debug.Log("lynn camera vector" + lynnCameraVector);
+//		Debug.Log("desired position " + desiredPosition);
+//		Debug.Log("lynn camera vector" + lynnCameraVector);
 		if(lynnCameraVector.magnitude < 0.8f)
 		{
 			cameraDistanceCheck.parent.Find("f020_hipoly_81_bones_opacity_C").GetComponent<Renderer>().enabled = false;

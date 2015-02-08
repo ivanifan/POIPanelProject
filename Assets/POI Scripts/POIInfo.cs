@@ -8,7 +8,7 @@ public class POIInfo : MonoBehaviour {
     public string buttonName;
     public Vector3 position;
     public Vector3 rotation;
-	public string marker;
+	public string markerPrefabName;
 
 	private POI point = new POI();
 
@@ -21,7 +21,7 @@ public class POIInfo : MonoBehaviour {
          point.buttonName = buttonName;
          point.position = position;
          point.rotation = rotation;
-			point.markerPrefab = marker;
+			point.markerPrefab = markerPrefabName;
          return point;
      }
 
@@ -32,7 +32,7 @@ public class POIInfo : MonoBehaviour {
             buttonName = point.buttonName;
             position = point.position;
             rotation = point.rotation;
-			marker = point.markerPrefab;
+			markerPrefabName = point.markerPrefab;
         }
     }
 

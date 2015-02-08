@@ -16,13 +16,13 @@ public class EditButton : MonoBehaviour {
 
 		POIMenuStateManager.EditModeState = true;
 		//show the edit window
-	 	POI_ReferenceHub.POIEditWindow.gameObject.SetActive (true);
+	 	POI_ReferenceHub.Instance.POIEditWindow.gameObject.SetActive (true);
 		//change the color of the POImenu
-		POI_ReferenceHub.POIMenu.gameObject.GetComponent<Image>().color = Color.black;
+		POI_ReferenceHub.Instance.POIMenu.gameObject.GetComponent<Image>().color = Color.black;
 
 		//show the apply and cancel button
-		POI_ReferenceHub.ApplyBut.gameObject.SetActive(true);
-		POI_ReferenceHub.CancelBut.gameObject.SetActive(true);
+		POI_ReferenceHub.Instance.ApplyBut.gameObject.SetActive(true);
+		POI_ReferenceHub.Instance.CancelBut.gameObject.SetActive(true);
 
 		//pause the game
 		Time.timeScale = 0;

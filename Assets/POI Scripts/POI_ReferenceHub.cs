@@ -4,40 +4,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class POI_ReferenceHub{
+public class POI_ReferenceHub : MonoBehaviour{
+	public static POI_ReferenceHub Instance;
 
-	public  static RectTransform POIMenu = new RectTransform();
-	public  static RectTransform POIEditWindow = new RectTransform();
-	public static RectTransform AddDeleteWindow = new RectTransform();
-	public  static RectTransform ApplyBut = new RectTransform();
-	public  static RectTransform CancelBut = new RectTransform();
-	public  static RectTransform EditBut = new RectTransform();
-	public  static List<InputField> poiInfoFields = new List<InputField>();
+	//references are all set through inspector
+	public  Transform POIroot;
+	public  RectTransform POIMenu;
+	public  RectTransform POIEditWindow;
+	public  RectTransform AddDeleteWindow;
+	public  RectTransform ApplyBut;
+	public  RectTransform CancelBut;
+	public  RectTransform EditBut;
+	public  List<InputField> poiInfoFields;
+	public  UnityEngine.Object defaultMarkerPrefab; //stores the reference to the marker prefab for instantiation
 
-	static POI_ReferenceHub(){
-		try{
-
-			POIMenu = GameObject.Find("POIMenu").GetComponent<RectTransform>();
-			AddDeleteWindow = POIMenu.FindChild("AddDeleteWindow").GetComponent<RectTransform>();
-			POIEditWindow = POIMenu.FindChild("POIEditWindow").GetComponent<RectTransform>();
-
-			ApplyBut = POIMenu.FindChild("Apply").GetComponent<RectTransform>();
-			CancelBut = POIMenu.FindChild("Cancel").GetComponent<RectTransform>();
-			EditBut = POIMenu.FindChild("EditButton").GetComponent<RectTransform>();
-			if(poiInfoFields.Count != 5 ){
-				poiInfoFields = new List<InputField>();
-				poiInfoFields.Add(POIEditWindow.FindChild("XPosField").GetComponent<InputField>());
-				poiInfoFields.Add(POIEditWindow.FindChild("YPosField").GetComponent<InputField>());
-				poiInfoFields.Add(POIEditWindow.FindChild("ZPosField").GetComponent<InputField>());
-				poiInfoFields.Add(POIEditWindow.FindChild("YRotField").GetComponent<InputField>());
-				poiInfoFields.Add(POIEditWindow.FindChild("NameField").GetComponent<InputField>());
-			}
+	void Awake(){
+		if (POI_ReferenceHub.Instance == null) {
+			POI_ReferenceHub.Instance = this;
+		} else {
+			Debug.LogError("two instance of POI_ReferenceHub!");
 		}
-		catch(UnityException ex){  //try to catch the situation when GameObject.Find returns null
-			Debug.LogError(ex.Message);
-		}
-		catch(Exception ex){
-			Debug.LogError(ex.Message);
-		}
+		//load the Pin prefab
+		defaultMarkerPrefab = Resources.Load ("POIPanel/Pin");
 	}
+	
 }
