@@ -33,9 +33,12 @@ public class POIActiveButtonManager : MonoBehaviour {
 			activeButton = clicked;
 			clicked.GetComponent<Button>().image.color = activeColor;
 
+			if(!POI_ReferenceHub.Instance.POIEditWindow.gameObject.activeSelf)
+				POI_ReferenceHub.Instance.POIEditWindow.gameObject.SetActive(true);
+
 			// Here we get the POI from the POIInfo script that is attached to the activeButton.
 			// We then use this info to populate the edit menu fields.
-			POI clickedPOI = activeButton.GetComponent<POIInfo>().Point;
+			POI clickedPOI = activeButton.GetComponent<POIInfoRef>().poiInfo.Point;
 			xPosField.value = clickedPOI.position.x.ToString();
 			yPosField.value = clickedPOI.position.y.ToString();
 			zPosField.value = clickedPOI.position.z.ToString();

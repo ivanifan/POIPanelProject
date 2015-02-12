@@ -198,7 +198,7 @@ public class POIButtonManager : MonoBehaviour {
 		EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
 		
 		// The following line adds the POIClicked function as a listener to the EventTrigger on the button we instantiated.
-		trigger.AddListener((eventData)=>GetComponent<POIActiveButtonManager>().POIClicked (newButton));
+		trigger.AddListener((eventData)=>POI_ReferenceHub.Instance.POIMenu.GetComponent<POIActiveButtonManager>().POIClicked (newButton));
 		
 		// The next line adds the entry we created to the Event Trigger of the instantiated button.
 		// The entry consists of two parts, the listener we set up earlier, and the EventTriggerType.

@@ -15,6 +15,7 @@ public class POI_ReferenceHub : MonoBehaviour{
 	public  RectTransform ApplyBut;
 	public  RectTransform CancelBut;
 	public  RectTransform EditBut;
+	public  RectTransform HintText;
 	public  List<InputField> poiInfoFields;
 	public  UnityEngine.Object defaultMarkerPrefab; //stores the reference to the marker prefab for instantiation
 
