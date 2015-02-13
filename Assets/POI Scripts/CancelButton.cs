@@ -4,8 +4,8 @@ using System.Collections;
 
 public class CancelButton : MonoBehaviour {
 
+	//reload the xml file to regenerate buttons and markers
 	public void cancelClicked(){
-		POIButtonManager.editHandler = POIButtonManager.originalHandler;
 		POIButtonManager.instance.LoadAndGenerateButs();
 
 		POIMenuStateManager.EditModeState = false;

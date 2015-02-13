@@ -44,6 +44,15 @@ public class POI
 		rotation = rot;
 		markerPrefab = marker;
 	}
+
+	//copy by value
+	public void UpdateByValue(POI point){
+		sceneFlag = point.sceneFlag;
+		buttonName = point.buttonName;
+		position = point.position;
+		rotation = point.rotation;
+		markerPrefab = point.markerPrefab;
+	}
 }
 
 [XmlRoot]

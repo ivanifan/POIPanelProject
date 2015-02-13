@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 public class POIButtonManager : MonoBehaviour {
 
 	public static POIButtonManager instance{get; set;}
-    public static POIHandler editHandler = new POIHandler();
     // variable to hold the initial button and poi data when the application starts
     // will have an option in the poi menu to restore the original values
     public static POIHandler originalHandler = new POIHandler();
@@ -58,12 +57,7 @@ public class POIButtonManager : MonoBehaviour {
 				SaveButsToXML();
 			}
 		}
-
-		// make a copy of the original poi information
-		// all of the modifications will be done with editHandler, leaving originalHandler unchanged
-		// !!!! this may be changed if we move to only using one handler object
-		editHandler = originalHandler;
-        
+	        
 	}// start
 
 	//load the xml from specified path into the handler
@@ -91,7 +85,7 @@ public class POIButtonManager : MonoBehaviour {
 
 			//clear current markers in marker root
 			foreach(Transform child in markerRoot.transform){
-				Destroy(child);
+				Destroy(child.gameObject);
 			}
 
 			NumOfButtons = 0;
@@ -268,7 +262,6 @@ public class POIButtonManager : MonoBehaviour {
 				originalHandler.AddPoint (butsInEditor[i]);
 			}
 		}
-
 	}
 
 	//compare two POI classes by value

@@ -9,6 +9,8 @@ public class HintManager : MonoBehaviour {
 
 	private Text hintText = null;
 
+	private bool textUpdated = false;
+
 	void Start()
 	{
 		hintText = gameObject.GetComponentInChildren<Text> ();
@@ -19,4 +21,5 @@ public class HintManager : MonoBehaviour {
 	{
 		hintText.text = hints [hint];
 	}
+
 }

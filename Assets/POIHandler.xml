@@ -18,5 +18,20 @@
       </Rotation>
       <MarkerPrefabName>Pin</MarkerPrefabName>
     </POI>
+    <POI>
+      <SceneFlagList />
+      <Name>test2</Name>
+      <Position>
+        <x>-10.11</x>
+        <y>0.75</y>
+        <z>20.91</z>
+      </Position>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <MarkerPrefabName>Pin</MarkerPrefabName>
+    </POI>
   </ProjectPOIs>
 </POIHandler>

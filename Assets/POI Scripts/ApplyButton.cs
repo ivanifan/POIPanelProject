@@ -6,8 +6,7 @@ public class ApplyButton : MonoBehaviour {
 
 	public void applyChangesToXML(){
 
-		XmlIO.Save(POIButtonManager.editHandler, POI_GlobalVariables.XMLpath);
-		POIButtonManager.originalHandler = POIButtonManager.editHandler;
+		XmlIO.Save(POIButtonManager.originalHandler, POI_GlobalVariables.XMLpath);
 
 		POIMenuStateManager.EditModeState = false;
 
