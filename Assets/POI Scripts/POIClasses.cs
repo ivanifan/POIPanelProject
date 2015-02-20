@@ -22,7 +22,7 @@ public class POI
     public Vector3 rotation;
 
 	[XmlElement("MarkerPrefabName")]
-	public string markerPrefab;
+	public string markerModelPrefab;
 
     public POI()
     {
@@ -34,7 +34,7 @@ public class POI
         buttonName = bName;
         position = pos;
         rotation = rot;
-		markerPrefab = marker;
+		markerModelPrefab = marker;
     }
 
 	public void Update(List<string> sFlag, string bName, Vector3 pos, Vector3 rot, string marker){
@@ -42,7 +42,7 @@ public class POI
 		buttonName = bName;
 		position = pos;
 		rotation = rot;
-		markerPrefab = marker;
+		markerModelPrefab = marker;
 	}
 
 	//copy by value
@@ -51,7 +51,7 @@ public class POI
 		buttonName = point.buttonName;
 		position = point.position;
 		rotation = point.rotation;
-		markerPrefab = point.markerPrefab;
+		markerModelPrefab = point.markerModelPrefab;
 	}
 }
 

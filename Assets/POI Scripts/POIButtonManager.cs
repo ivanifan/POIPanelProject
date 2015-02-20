@@ -149,17 +149,24 @@ public class POIButtonManager : MonoBehaviour {
 	//instantiate an instance of marker and return the marker object
 	public GameObject generateMarker(POI point){
 		//load marker prefab by name
-		string path = "POIPanel/" + point.markerPrefab;
+		string path = "POIPanel/" + point.markerModelPrefab;
 		Object prefab = Resources.Load(path);
 		if(prefab == null){
-			Debug.LogError("marker of name " + point.markerPrefab + " not found!");
+			Debug.LogError("marker of name " + point.markerModelPrefab + " not found!");
 		}
 
 		//configure marker transform, assign point to POIInfo component, assign marker name to button name
-		GameObject marker = Instantiate(prefab, point.position, Quaternion.Euler(point.rotation)) as GameObject;
+		//each marker model is a child of a marker parent. this way we can easily switch the model representation of the marker
+		GameObject marker = new GameObject(point.buttonName);//an empty game object whose child is marker model
+		marker.AddComponent<POIInfo>();
+		marker.transform.position = point.position;
+		marker.transform.eulerAngles = point.rotation;
 		marker.transform.parent = markerRoot.transform;
 		marker.GetComponent<POIInfo>().Point = point;
-		marker.name = point.buttonName;
+
+		GameObject markerModel = Instantiate(prefab, point.position, Quaternion.Euler(point.rotation)) as GameObject;
+		markerModel.transform.parent = marker.transform;
+
 		return marker;
 	}
 
