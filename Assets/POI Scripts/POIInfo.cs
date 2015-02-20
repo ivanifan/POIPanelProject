@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,7 +21,7 @@ public class POIInfo : MonoBehaviour {
          point.buttonName = buttonName;
          point.position = position;
          point.rotation = rotation;
-			point.markerPrefab = markerPrefabName;
+			point.markerModelPrefab = markerPrefabName;
          return point;
      }
 
@@ -32,7 +32,7 @@ public class POIInfo : MonoBehaviour {
             buttonName = point.buttonName;
             position = point.position;
             rotation = point.rotation;
-			markerPrefabName = point.markerPrefab;
+			markerPrefabName = point.markerModelPrefab;
         }
     }
 
