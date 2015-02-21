@@ -8,7 +8,7 @@ public class CancelChangesButton : MonoBehaviour {
 	public void CancelClicked()
 	{
 		GameObject activeButton = POI_ReferenceHub.Instance.POIMenu.GetComponent<POIActiveButtonManager> ().activeButton;
-		POI activePoint = activeButton.GetComponent<POIInfo> ().Point;
+		POI activePoint = activeButton.GetComponent<POIInfoRef> ().poiInfo.Point;
 		POI_ReferenceHub.Instance.poiInfoFields[0].value = activePoint.position.x.ToString();
 		POI_ReferenceHub.Instance.poiInfoFields[1].value = activePoint.position.y.ToString();
 		POI_ReferenceHub.Instance.poiInfoFields[2].value = activePoint.position.z.ToString();
