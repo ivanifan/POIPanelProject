@@ -45,7 +45,7 @@ public class POIActiveButtonManager : MonoBehaviour {
 			yRotField.value = clickedPOI.rotation.y.ToString();
 			nameField.value = clickedPOI.buttonName;
 
-			Transform deleteBut = POI_ReferenceHub.Instance.AddDeleteWindow.FindChild("DeletePoint") as Transform;
+			Transform deleteBut = POI_ReferenceHub.Instance.AddDeleteWindow.FindChild("Delete") as Transform;
 			deleteBut.GetComponent<Button>().enabled = true; //disable delete button
 			Transform deleteButText = deleteBut.FindChild("Text") as Transform;
 			deleteButText.GetComponent<Text>().color = Color.black;

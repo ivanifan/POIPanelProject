@@ -25,25 +25,25 @@ RenderSettings:
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
   m_AmbientSkyboxAmount: 1
   m_AmbientProbe:
-    sh[0]: {x: 1.31152451, y: 1.67723489, z: 2.11887264}
-    sh[1]: {x: .301461726, y: -.110256895, z: -.552203357}
-    sh[2]: {x: 0, y: 0, z: 0}
-    sh[3]: {x: 6.01395822e-10, y: 3.89713595e-10, z: 7.60327912e-10}
-    sh[4]: {x: -5.35685607e-10, y: 1.2850998e-09, z: 2.33646258e-09}
-    sh[5]: {x: 4.65661287e-09, y: 0, z: 0}
-    sh[6]: {x: .244536638, y: .20822829, z: .180940032}
-    sh[7]: {x: -7.13944459e-11, y: 1.0231687e-10, z: 5.04762898e-11}
-    sh[8]: {x: .423545539, y: .360667765, z: .313395381}
-  m_AmbientProbeInGamma:
-    sh[0]: {x: .547612786, y: .805540442, z: 1.37954688}
-    sh[1]: {x: .100971915, y: -.103394598, z: -.581308961}
+    sh[0]: {x: .547612667, y: .805540442, z: 1.3795464}
+    sh[1]: {x: .100971967, y: -.103394598, z: -.581308603}
     sh[2]: {x: 0, y: 0, z: 0}
     sh[3]: {x: 3.24287625e-10, y: 1.29601357e-10, z: 7.19060256e-10}
     sh[4]: {x: 1.3193191e-10, y: 6.85864088e-10, z: -8.36156144e-10}
     sh[5]: {x: 1.16415322e-09, y: 0, z: 0}
-    sh[6]: {x: .167598426, y: .218213677, z: .262489915}
+    sh[6]: {x: .167598382, y: .218213677, z: .262489974}
     sh[7]: {x: 2.42718345e-11, y: 3.52429197e-12, z: -1.45858436e-10}
-    sh[8]: {x: .290282905, y: .377955794, z: .454639286}
+    sh[8]: {x: .290282845, y: .377955794, z: .454638928}
+  m_AmbientProbeInGamma:
+    sh[0]: {x: 1.31152439, y: 1.67723489, z: 2.1188724}
+    sh[1]: {x: .301461786, y: -.110256895, z: -.552203178}
+    sh[2]: {x: 0, y: 0, z: 0}
+    sh[3]: {x: 5.86844129e-10, y: 3.89713595e-10, z: 7.60327912e-10}
+    sh[4]: {x: -5.35685607e-10, y: 1.2850998e-09, z: 2.33646258e-09}
+    sh[5]: {x: 4.65661287e-09, y: 0, z: 0}
+    sh[6]: {x: .244536489, y: .20822829, z: .180940092}
+    sh[7]: {x: -7.13944459e-11, y: 1.0231687e-10, z: 5.04762898e-11}
+    sh[8]: {x: .42354548, y: .360667765, z: .313395262}
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: .5
@@ -1067,6 +1067,7 @@ GameObject:
   - 114: {fileID: 386534935}
   - 114: {fileID: 386534938}
   - 114: {fileID: 386534937}
+  - 114: {fileID: 386534939}
   m_Layer: 5
   m_Name: SceneFlagWindow
   m_TagString: Untagged
@@ -1159,6 +1160,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &386534939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386534933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd791d12f1fc7246b9020ebf7271b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNames: []
 --- !u!1 &409441186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,8 +2438,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 360416657}
   m_HandleRect: {fileID: 360416656}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: .99999994
+  m_Size: .237333328
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2673,6 +2686,7 @@ GameObject:
   - 224: {fileID: 877088882}
   - 222: {fileID: 877088884}
   - 114: {fileID: 877088883}
+  - 114: {fileID: 877088885}
   m_Layer: 5
   m_Name: SceneFlagList
   m_TagString: Untagged
@@ -2693,10 +2707,10 @@ RectTransform:
   m_Father: {fileID: 386534934}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -228.799988}
+  m_SizeDelta: {x: 137, y: 300}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &877088883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2725,6 +2739,26 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 877088881}
   m_HideIfInvisible: 1
+--- !u!114 &877088885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877088881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
 --- !u!1 &947400835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,6 +5321,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 386534939}
+        m_MethodName: GenerateSceneCheckBoxes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1734261680
@@ -6194,6 +6240,7 @@ MonoBehaviour:
   EditBut: {fileID: 1129621259}
   HintText: {fileID: 444476534}
   InvalidInputWarning: {fileID: 1440642788}
+  SceneFlagList: {fileID: 877088882}
   poiInfoFields:
   - {fileID: 1222049523}
   - {fileID: 1423215070}
