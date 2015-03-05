@@ -1493,7 +1493,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 545135787}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318083241}
+        m_MethodName: ChangeSize
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &545135787
@@ -2635,6 +2647,10 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967039
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
   m_IsPrefabParent: 0
@@ -3194,22 +3210,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adbc266d642cae46b4378d2b458d1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compassPlane: {fileID: 1623459506}
-  compass: {fileID: 2800000, guid: db4c9b354311596428a6d3a80382e658, type: 3}
-  leftOffset: 410
-  topOffset: 10
-  mapWidth: 400
-  mapHeight: 400
-  leftOffsetCompass: 110
-  topOffsetCompass: 10
-  compassWidth: 100
-  compassHeight: 100
-  mapProportionOfScreen: .200000003
-  compassProportionOfScreen: .0599999987
-  maxOrthographicSize: 5
   miniMapCam: {fileID: 908878424}
+  compassPlane: {fileID: 1623459506}
   avatar: {fileID: 1318083234}
   zoomLabel: {fileID: 984840959}
+  sizeLabel: {fileID: 0}
+  miniMapCanvas: {fileID: 0}
+  mapProportionOfScreen: .200000003
+  maxOrthographicSize: 5
+  isMiniActive: 0
 --- !u!81 &908878421
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4896,12 +4905,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318083234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88074bda1ba1444ea4a991829c32fe1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8adbc266d642cae46b4378d2b458d1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiniMapBase: {fileID: 908878418}
-  CompassPlane: {fileID: 1623459506}
-  Avatar: {fileID: 1318083234}
+  miniMapCam: {fileID: 908878424}
+  compassPlane: {fileID: 1623459506}
+  avatar: {fileID: 1318083234}
+  zoomLabel: {fileID: 984840959}
+  sizeLabel: {fileID: 130781061}
+  miniMapCanvas: {fileID: 2064787635}
+  mapProportionOfScreen: .200000003
+  maxOrthographicSize: 5
+  isMiniActive: 0
 --- !u!1 &1327006524
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,7 +5844,8 @@ GameObject:
   - 4: {fileID: 1623459509}
   - 33: {fileID: 1623459508}
   - 23: {fileID: 1623459507}
-  m_Layer: 0
+  - 114: {fileID: 1623459510}
+  m_Layer: 8
   m_Name: Compass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5878,11 +5894,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623459506}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 2.5, y: 1.59999943, z: 2.5}
+  m_LocalPosition: {x: 0, y: 2.29999995, z: 0}
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children: []
   m_Father: {fileID: 115869478}
   m_RootOrder: 7
+--- !u!114 &1623459510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1623459506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626727c4fde50d84ea61597a1ed025d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 1318083234}
 --- !u!1 &1649593350
 GameObject:
   m_ObjectHideFlags: 0
@@ -7778,7 +7806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2080507867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318083241}
+        m_MethodName: ChangeSize
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2080507867
