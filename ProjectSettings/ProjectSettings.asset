@@ -343,7 +343,7 @@ PlayerSettings:
   XboxOneSockets:
     Unity Internal - Mono async-IO:
       m_Name: Unity Internal - Mono async-IO
-      m_Port: 0
+      m_Port: 34244
       m_Protocol: 0
       m_Usages: 0000000001000000
       m_TemplateName: 
@@ -374,5 +374,7 @@ PlayerSettings:
   WebGL::dataCaching: 0
   stringPropertyNames:
   - WebGL::emscriptenArgs
+  - WebGL::template
   WebGL::emscriptenArgs: 
+  WebGL::template: APPLICATION:Default
   firstStreamedLevelWithResources: 0
