@@ -17,6 +17,7 @@ public class POI_ReferenceHub : MonoBehaviour{
 	public  RectTransform EditBut;
 	public  RectTransform HintText;
 	public RectTransform InvalidInputWarning;
+	public RectTransform NameExistedWarning;
 	public RectTransform SceneFlagList;
 
 	public  List<InputField> poiInfoFields;

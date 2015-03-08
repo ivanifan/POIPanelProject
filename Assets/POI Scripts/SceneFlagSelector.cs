@@ -38,6 +38,9 @@ public class SceneFlagSelector : MonoBehaviour {
 
 	public List<string> GetSceneFlags()
 	{
+		if(sceneCheckBoxes ==null){
+			return null;
+		}
 		return((from toggle in sceneCheckBoxes where toggle.isOn select toggle.gameObject.GetComponentInChildren<Text>().text).ToList());
 	}
 }
