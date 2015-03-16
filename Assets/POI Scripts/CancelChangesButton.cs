@@ -14,5 +14,7 @@ public class CancelChangesButton : MonoBehaviour {
 		POI_ReferenceHub.Instance.poiInfoFields[2].value = activePoint.position.z.ToString();
 		POI_ReferenceHub.Instance.poiInfoFields[3].value = activePoint.rotation.y.ToString();
 		POI_ReferenceHub.Instance.poiInfoFields[4].value = activePoint.buttonName;
+
+		POI_ReferenceHub.Instance.POIEditWindow.gameObject.SetActive (false);
 	}
 }
