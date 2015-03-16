@@ -73,6 +73,19 @@ public class POIButtonManager : MonoBehaviour {
 		}
 	}
 
+	public void GeneratePairCurrentLocation()
+	{
+		POI newPOI = new POI (new List<string>{Application.loadedLevelName}, POI_ReferenceHub.Instance.BookmarkCurrentLocationNameField.GetComponent<InputField>().value, POI_ReferenceHub.Instance.Avatar.transform.position, POI_ReferenceHub.Instance.Avatar.transform.rotation.eulerAngles, POI_ReferenceHub.Instance.defaultMarkerPrefab.name);
+		GenerateButMarkerPair (newPOI);
+	}
+
+	//generate and setup a button marker pair
+	public void GenerateButMarkerPair(POI point){
+		GameObject marker;
+		marker = generateMarker(point);
+		CreateNewButton(point, marker);
+	}
+
 	//this is the combination of function loadButsFromXML and GenerateButsMarkers
 	public void LoadAndGenerateButs(){
 		if (File.Exists(POI_GlobalVariables.XMLpath))
@@ -139,12 +152,7 @@ public class POIButtonManager : MonoBehaviour {
 
 	}
 
-	//generate and setup a button marker pair
-	public void GenerateButMarkerPair(POI point){
-		GameObject marker;
-		marker = generateMarker(point);
-		CreateNewButton(point, marker);
-	}
+
 
 	//instantiate an instance of marker and return the marker object
 	public GameObject generateMarker(POI point){
