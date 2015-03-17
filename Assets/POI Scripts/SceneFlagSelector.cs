@@ -27,8 +27,7 @@ public class SceneFlagSelector : MonoBehaviour {
 			{
 				GameObject newToggle = Instantiate(Resources.Load("POIPanel/SceneCheckBox")) as GameObject;
 				newToggle.GetComponentInChildren<Text>().text = scene;
-				newToggle.GetComponent<RectTransform>().SetParent(POI_ReferenceHub.Instance.SceneFlagList.GetComponent<RectTransform>(), false);
-				newToggle.GetComponent<RectTransform>().SetAsLastSibling();
+				newToggle.transform.parent = POI_ReferenceHub.Instance.SceneFlagList;
 				LayoutRebuilder.MarkLayoutForRebuild(POI_ReferenceHub.Instance.SceneFlagList.GetComponent<RectTransform>());
 
 				sceneCheckBoxes.Add(newToggle.GetComponent<Toggle>());
