@@ -3,14 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EditButton : MonoBehaviour {
-	/*
-	public RectTransform POIEditWindow;
-	public RectTransform POIMenu;
-
-	public RectTransform ApplyButton;
-	public RectTransform CancelButton;
-*/
-
 
 	public void EditClicked(){
 
@@ -21,6 +13,11 @@ public class EditButton : MonoBehaviour {
 		deleteBut.GetComponent<Button>().enabled = false; //disable delete button
 		Transform deleteButText = deleteBut.FindChild("Text") as Transform;
 		deleteButText.GetComponent<Text>().color = new Color(0.57f,0.57f,0.57f);
+
+		Transform editBut = POI_ReferenceHub.Instance.AddDeleteWindow.FindChild("Edit") as Transform;
+		editBut.GetComponent<Button>().enabled = false; //disable edit button
+		Transform editButText = editBut.FindChild("Text") as Transform;
+		editButText.GetComponent<Text>().color = new Color(0.57f,0.57f,0.57f);
 
 		// show the hint text
 		POI_ReferenceHub.Instance.HintText.gameObject.SetActive (true);
@@ -41,6 +38,4 @@ public class EditButton : MonoBehaviour {
 		//hide the edit button
 		gameObject.SetActive(false);
 	}
-
-
 }
