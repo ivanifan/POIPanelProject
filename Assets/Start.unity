@@ -26,24 +26,24 @@ RenderSettings:
   m_AmbientSkyboxAmount: 1
   m_AmbientProbe:
     sh[0]: {x: 1.31152451, y: 1.67723489, z: 2.11887264}
-    sh[1]: {x: .301461726, y: -.110256895, z: -.552203357}
+    sh[1]: {x: .301461756, y: -.110256895, z: -.552203298}
     sh[2]: {x: 0, y: 0, z: 0}
     sh[3]: {x: 6.01395822e-10, y: 3.89713595e-10, z: 7.60327912e-10}
     sh[4]: {x: -5.35685607e-10, y: 1.2850998e-09, z: 2.33646258e-09}
     sh[5]: {x: 4.65661287e-09, y: 0, z: 0}
-    sh[6]: {x: .244536638, y: .20822829, z: .180940032}
+    sh[6]: {x: .244536638, y: .20822829, z: .180939972}
     sh[7]: {x: -7.13944459e-11, y: 1.0231687e-10, z: 5.04762898e-11}
-    sh[8]: {x: .423545539, y: .360667765, z: .313395381}
+    sh[8]: {x: .423545539, y: .360667765, z: .313395262}
   m_AmbientProbeInGamma:
-    sh[0]: {x: .547612786, y: .805540442, z: 1.37954688}
-    sh[1]: {x: .100971915, y: -.103394598, z: -.581308961}
+    sh[0]: {x: .547612727, y: .805540442, z: 1.37954664}
+    sh[1]: {x: .100971945, y: -.103394598, z: -.581308722}
     sh[2]: {x: 0, y: 0, z: 0}
     sh[3]: {x: 3.24287625e-10, y: 1.29601357e-10, z: 7.19060256e-10}
     sh[4]: {x: 1.3193191e-10, y: 6.85864088e-10, z: -8.36156144e-10}
     sh[5]: {x: 1.16415322e-09, y: 0, z: 0}
-    sh[6]: {x: .167598426, y: .218213677, z: .262489915}
+    sh[6]: {x: .167598441, y: .218213677, z: .262489796}
     sh[7]: {x: 2.42718345e-11, y: 3.52429197e-12, z: -1.45858436e-10}
-    sh[8]: {x: .290282905, y: .377955794, z: .454639286}
+    sh[8]: {x: .290282845, y: .377955794, z: .454639047}
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: .5
@@ -2877,15 +2877,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400240, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -10.1099997
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 400240, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400240, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 20.9099998
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 400240, guid: 88d1ae1d3c1a04e0d816de3fd30c0ad6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3481,8 +3481,8 @@ MonoBehaviour:
   compassPlane: {fileID: 1623459506}
   avatar: {fileID: 1318083234}
   zoomLabel: {fileID: 984840959}
-  sizeLabel: {fileID: 0}
-  miniMapCanvas: {fileID: 0}
+  sizeLabel: {fileID: 130781061}
+  miniMapCanvas: {fileID: 2064787635}
   mapProportionOfScreen: .200000003
   maxOrthographicSize: 5
   isMiniActive: 0
@@ -3529,10 +3529,10 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 1d0f85dbb08787f4697301f8985197ad, type: 2}
   m_TargetDisplay: 0
   m_HDR: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_LensThickness: 0
@@ -8014,7 +8014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1964445248
 Transform:
   m_ObjectHideFlags: 0
@@ -8466,7 +8466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2064787636
 RectTransform:
   m_ObjectHideFlags: 0
