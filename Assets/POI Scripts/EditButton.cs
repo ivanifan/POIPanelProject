@@ -14,7 +14,7 @@ public class EditButton : MonoBehaviour {
 		Transform deleteButText = deleteBut.FindChild("Text") as Transform;
 		deleteButText.GetComponent<Text>().color = new Color(0.57f,0.57f,0.57f);
 
-		Transform editBut = POI_ReferenceHub.Instance.AddDeleteWindow.FindChild("Edit") as Transform;
+		Transform editBut = POI_ReferenceHub.Instance.AddDeleteWindow.FindChild("EditBookmark") as Transform;
 		editBut.GetComponent<Button>().enabled = false; //disable edit button
 		Transform editButText = editBut.FindChild("Text") as Transform;
 		editButText.GetComponent<Text>().color = new Color(0.57f,0.57f,0.57f);

@@ -16,7 +16,7 @@ public class EditBookmarkBut : MonoBehaviour {
 		POI_ReferenceHub.Instance.POIEditWindow.FindChild("XPosField").FindChild("Text").GetComponent<Text>().text = clickedPOI.position.x.ToString();
 		POI_ReferenceHub.Instance.POIEditWindow.FindChild("YPosField").FindChild("Text").GetComponent<Text>().text = clickedPOI.position.y.ToString();
 		POI_ReferenceHub.Instance.POIEditWindow.FindChild("ZPosField").FindChild("Text").GetComponent<Text>().text = clickedPOI.position.z.ToString();
-		POI_ReferenceHub.Instance.POIEditWindow.FindChild("YPosField").FindChild("Text").GetComponent<Text>().text = clickedPOI.rotation.y.ToString();
+		POI_ReferenceHub.Instance.POIEditWindow.FindChild("YRotField").FindChild("Text").GetComponent<Text>().text = clickedPOI.rotation.y.ToString();
 		POI_ReferenceHub.Instance.POIEditWindow.FindChild("NameField").FindChild("Text").GetComponent<Text>().text = clickedPOI.buttonName;
 
 		//disable the Add bookmark button
